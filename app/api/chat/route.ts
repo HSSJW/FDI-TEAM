@@ -10,7 +10,8 @@ const google = createGoogleGenerativeAI({
   apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
 });
 
-const MODEL_ID = process.env.GOOGLE_GENERATIVE_AI_MODEL ?? "gemini-3-flash";
+const MODEL_ID =
+  process.env.GOOGLE_GENERATIVE_AI_MODEL ?? "gemini-3-flash-preview";
 
 export async function POST(req: Request) {
   if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
