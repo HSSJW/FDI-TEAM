@@ -46,7 +46,7 @@ export default function IntroPage({
 }: Props) {
   return (
     <div>
-      <div className="relative -mx-12 -mt-12 px-12 pt-12 pb-20 mb-16 grid-bg">
+      <div className="relative -mx-12 -mt-12 px-12 pt-12 pb-10 mb-6 grid-bg">
         <div className="max-w-4xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium mb-8">
             <Sparkles className="w-3 h-3" />
