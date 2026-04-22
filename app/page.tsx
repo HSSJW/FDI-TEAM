@@ -145,9 +145,9 @@ export default function Home() {
               priority
               sizes="100vw"
               className="object-cover scale-110"
-              style={{ filter: "blur(40px) saturate(1.15)" }}
+              style={{ filter: "blur(36px) saturate(1.35)" }}
             />
-            <div className="absolute inset-0 bg-white/85" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/55 to-white/25" />
           </motion.div>
         )}
       </AnimatePresence>
