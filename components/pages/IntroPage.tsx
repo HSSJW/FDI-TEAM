@@ -1,13 +1,42 @@
 import { Sparkles, ArrowRight } from "lucide-react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
+import AutoImageCarousel from "@/components/shared/AutoImageCarousel";
 import { SUGGESTED_QUESTIONS } from "@/lib/suggestions";
 import type { PageId } from "@/lib/pages";
+import type { CarouselImage } from "@/lib/types";
 
 type Props = {
   highlightedId: string | null;
   onNavigate: (pageId: PageId) => void;
   onAskQuestion: (question: string) => void;
 };
+
+const sitePhotos: CarouselImage[] = [
+  {
+    src: "/site-photos/1.png",
+    alt: "FDI 2026 Symposium 타이틀 - Sustainable AI Transformation",
+  },
+  {
+    src: "/site-photos/2.jpg",
+    alt: "Fasoo CEO Sustainable AI Transformation 기조 발표",
+  },
+  {
+    src: "/site-photos/3.jpg",
+    alt: "AI Data Infrastructure 구축 전략 발표 장면",
+  },
+  {
+    src: "/site-photos/4.jpg",
+    alt: "Wrapsody Business-Ready AI Agents 3종 소개 슬라이드",
+  },
+  {
+    src: "/site-photos/5.jpg",
+    alt: "Wrapsody K-Assistant 시연 장면",
+  },
+  {
+    src: "/site-photos/6.jpg",
+    alt: "Wrapsody Librarian 시연 장면",
+  },
+];
 
 export default function IntroPage({
   highlightedId,
@@ -39,6 +68,14 @@ export default function IntroPage({
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
+      </div>
+
+      <div className="mb-16">
+        <AutoImageCarousel
+          images={sitePhotos}
+          intervalMs={4000}
+          ariaLabel="FDI 2026 Symposium 현장 사진"
+        />
       </div>
 
       <SectionWrapper id="chat-tutorial" highlightedId={highlightedId}>

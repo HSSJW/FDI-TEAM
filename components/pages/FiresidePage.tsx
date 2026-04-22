@@ -5,6 +5,8 @@ import {
   ShieldCheck,
   Sparkles,
   MessageCircle,
+  Download,
+  ExternalLink,
 } from "lucide-react";
 import PageHeader from "@/components/shared/PageHeader";
 import SectionWrapper from "@/components/shared/SectionWrapper";
@@ -144,7 +146,11 @@ export default function FiresidePage({ highlightedId }: Props) {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper id="open-api" highlightedId={highlightedId}>
+      <SectionWrapper
+        id="open-api"
+        highlightedId={highlightedId}
+        className="mb-12"
+      >
         <div className="border border-slate-200 rounded-xl p-6 float-hover bg-white">
           <h4 className="font-medium text-slate-900 mb-3 flex items-center gap-2">
             <Zap className="w-4 h-4 text-blue-600" />
@@ -164,6 +170,38 @@ export default function FiresidePage({ highlightedId }: Props) {
               </span>
             </li>
           </ul>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper id="fireside-resources" highlightedId={highlightedId}>
+        <div className="grid grid-cols-2 gap-4">
+          <a
+            href="/brochures/Brochure_Fireside.pdf"
+            download
+            className="border border-slate-200 rounded-xl p-6 text-left transition-all float-hover bg-white block"
+          >
+            <Download className="w-5 h-5 text-blue-600 mb-3" />
+            <div className="font-medium text-slate-900 mb-1">
+              브로슈어 다운로드
+            </div>
+            <div className="text-sm text-slate-500">
+              Fireside 공식 브로슈어 (PDF)
+            </div>
+          </a>
+          <a
+            href="https://www.fasoo.ai/products/fasoo-fireside"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-slate-200 rounded-xl p-6 text-left transition-all float-hover bg-white block"
+          >
+            <ExternalLink className="w-5 h-5 text-blue-600 mb-3" />
+            <div className="font-medium text-slate-900 mb-1">
+              Fireside 제품 페이지
+            </div>
+            <div className="text-sm text-slate-500">
+              fasoo.ai/products/fasoo-fireside 로 이동
+            </div>
+          </a>
         </div>
       </SectionWrapper>
     </div>

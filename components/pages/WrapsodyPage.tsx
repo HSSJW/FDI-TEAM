@@ -1,7 +1,6 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Download, ExternalLink } from "lucide-react";
 import PageHeader from "@/components/shared/PageHeader";
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import SubHeading from "@/components/shared/SubHeading";
 import ImageCarousel from "@/components/shared/ImageCarousel";
 import { wrapsodyCaptures } from "@/lib/captures";
 
@@ -107,13 +106,48 @@ export default function WrapsodyPage({ highlightedId }: Props) {
         ))}
       </div>
 
-      <SectionWrapper id="live-demo" highlightedId={highlightedId}>
-        <SubHeading accent="blue">Live Demo</SubHeading>
+      <SectionWrapper
+        id="live-demo"
+        highlightedId={highlightedId}
+        className="mb-12"
+      >
         <div className="max-w-3xl">
           <ImageCarousel
             images={wrapsodyCaptures}
             ariaLabel="Wrapsody 실행 화면"
           />
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper id="wrapsody-resources" highlightedId={highlightedId}>
+        <div className="grid grid-cols-2 gap-4">
+          <a
+            href="/brochures/Brochure_Wrapsody.pdf"
+            download
+            className="border border-slate-200 rounded-xl p-6 text-left transition-all float-hover bg-white block"
+          >
+            <Download className="w-5 h-5 text-blue-600 mb-3" />
+            <div className="font-medium text-slate-900 mb-1">
+              브로슈어 다운로드
+            </div>
+            <div className="text-sm text-slate-500">
+              Wrapsody 공식 브로슈어 (PDF)
+            </div>
+          </a>
+          <a
+            href="https://www.fasoo.ai/products/wrapsody"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-slate-200 rounded-xl p-6 text-left transition-all float-hover bg-white block"
+          >
+            <ExternalLink className="w-5 h-5 text-blue-600 mb-3" />
+            <div className="font-medium text-slate-900 mb-1">
+              Wrapsody 제품 페이지
+            </div>
+            <div className="text-sm text-slate-500">
+              fasoo.ai/products/wrapsody 로 이동
+            </div>
+          </a>
         </div>
       </SectionWrapper>
     </div>

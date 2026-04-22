@@ -33,6 +33,7 @@ export const SECTIONS: Record<PageId, readonly string[]> = {
     "tech-access",
     "tech-quality",
     "live-demo",
+    "wrapsody-resources",
   ],
   agents: [
     "agents-overview",
@@ -44,7 +45,13 @@ export const SECTIONS: Record<PageId, readonly string[]> = {
     "domain-master-demo",
     "real-cases",
   ],
-  fireside: ["concept", "integrated-hub", "mobile-extension", "open-api"],
+  fireside: [
+    "concept",
+    "integrated-hub",
+    "mobile-extension",
+    "open-api",
+    "fireside-resources",
+  ],
   conclusion: ["summary", "one-and-only", "cta"],
 };
 
@@ -78,7 +85,8 @@ export const SECTION_DESCRIPTIONS: Record<string, string> = {
   "tech-freshness": "자동 최신화 기술",
   "tech-access": "ACL 기반 접근 통제",
   "tech-quality": "메타데이터 품질 관리",
-  "live-demo": "Wrapsody 라이브 데모",
+  "live-demo": "Wrapsody 실행 화면",
+  "wrapsody-resources": "Wrapsody 브로슈어·공식 제품 페이지 링크",
   "agents-overview": "세 가지 에이전트 개요",
   "k-assistant": "K-Assistant 설명",
   "k-assistant-demo": "K-Assistant 실행 캡쳐",
@@ -91,6 +99,7 @@ export const SECTION_DESCRIPTIONS: Record<string, string> = {
   "integrated-hub": "Wrapsody 3기능 + 메신저 통합 구조",
   "mobile-extension": "모바일 인터페이스 확장",
   "open-api": "개방형 API 연계",
+  "fireside-resources": "Fireside 브로슈어·공식 제품 페이지 링크",
   summary: "결론 요약",
   "one-and-only": "One & Only 솔루션 메시지",
   cta: "Call to Action",
