@@ -9,13 +9,11 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["Pretendard", "system-ui", "-apple-system", "sans-serif"],
-        display: ["Fraunces", "Georgia", "serif"],
+        display: ["Pretendard", "system-ui", "-apple-system", "sans-serif"],
         mono: ["JetBrains Mono", "Consolas", "monospace"],
       },
       animation: {
         "highlight-fade": "highlight-fade 2.5s ease-out forwards",
-        "page-enter": "page-enter 0.5s ease-out forwards",
-        "page-exit": "page-exit 0.3s ease-in forwards",
         "fade-up": "fade-up 0.4s ease-out forwards",
         "typing-dot": "typing-dot 1.4s ease-in-out infinite",
         "modal-enter": "modal-enter 0.3s ease-out forwards",

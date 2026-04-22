@@ -1,5 +1,4 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
@@ -23,8 +22,7 @@ body {
 }
 
 .font-display {
-  font-family: 'Fraunces', serif;
-  font-optical-sizing: auto;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .font-mono {
@@ -53,42 +51,6 @@ body {
   border-left-width: 3px;
   border-left-style: solid;
   padding-left: 1.5rem;
-}
-
-/* ---------- Page transition (Zoom + Fade) ---------- */
-
-@keyframes page-enter {
-  0% {
-    opacity: 0;
-    transform: scale(1.08);
-    filter: blur(4px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes page-exit {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.94);
-    filter: blur(4px);
-  }
-}
-
-.page-entering {
-  animation: page-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.page-exiting {
-  animation: page-exit 0.3s cubic-bezier(0.64, 0, 0.78, 0) forwards;
 }
 
 /* ---------- Fade up ---------- */

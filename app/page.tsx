@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
@@ -17,15 +19,12 @@ import AgentsPage from "@/components/pages/AgentsPage";
 import FiresidePage from "@/components/pages/FiresidePage";
 import ConclusionPage from "@/components/pages/ConclusionPage";
 import ChatPanel, { type ChatPanelHandle } from "@/components/chat/ChatPanel";
+import { pageMorphVariants } from "@/lib/page-motion";
 import { PAGES, getPage, type PageId } from "@/lib/pages";
-
-type TransitionState = "idle" | "exiting" | "entering";
 
 export default function Home() {
   const [currentPageId, setCurrentPageId] = useState<PageId>("intro");
   const [highlightedId, setHighlightedId] = useState<string | null>(null);
-  const [transitionState, setTransitionState] =
-    useState<TransitionState>("idle");
   const mainRef = useRef<HTMLElement>(null);
   const chatRef = useRef<ChatPanelHandle>(null);
 
@@ -35,15 +34,7 @@ export default function Home() {
     (pageId: PageId) => {
       if (pageId === currentPageId) return;
       setHighlightedId(null);
-      setTransitionState("exiting");
-      window.setTimeout(() => {
-        setCurrentPageId(pageId);
-        if (mainRef.current) mainRef.current.scrollTop = 0;
-        setTransitionState("entering");
-        window.setTimeout(() => {
-          setTransitionState("idle");
-        }, 500);
-      }, 300);
+      setCurrentPageId(pageId);
     },
     [currentPageId],
   );
@@ -60,7 +51,7 @@ export default function Home() {
     (pageId: PageId, sectionId: string) => {
       if (pageId !== currentPageId) {
         navigateTo(pageId);
-        window.setTimeout(() => highlightSection(sectionId), 900);
+        window.setTimeout(() => highlightSection(sectionId), 700);
       } else {
         highlightSection(sectionId);
       }
@@ -133,29 +124,56 @@ export default function Home() {
     }
   };
 
-  const pageAnimClass =
-    transitionState === "exiting"
-      ? "page-exiting"
-      : transitionState === "entering"
-        ? "page-entering"
-        : "";
-
   return (
-    <div className="h-screen bg-white text-slate-900 overflow-hidden flex flex-col">
+    <div className="relative h-screen bg-white text-slate-900 overflow-hidden flex flex-col">
+      {/* Wrapsody 페이지 전용 블러 배경 — 9페이지에서만 등장 */}
+      <AnimatePresence>
+        {currentPageId === "wrapsody" && (
+          <motion.div
+            key="wrapsody-bg"
+            aria-hidden
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+          >
+            <Image
+              src="/backgrounds/wrapsody-bg.jpg"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover scale-110"
+              style={{ filter: "blur(40px) saturate(1.15)" }}
+            />
+            <div className="absolute inset-0 bg-white/85" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Header currentPage={currentPage.num} totalPages={PAGES.length} />
-      <div className="flex-1 flex overflow-hidden">
+      <div className="relative z-10 flex-1 flex overflow-hidden">
         <Sidebar currentPageId={currentPageId} onNavigate={navigateTo} />
         <main ref={mainRef} className="flex-1 overflow-y-auto">
           <div className="max-w-4xl mx-auto px-12 py-12">
-            <div className={pageAnimClass} key={currentPageId}>
-              {renderPage()}
-              <PageNav
-                currentNum={currentPage.num}
-                total={PAGES.length}
-                onPrev={handlePrev}
-                onNext={handleNext}
-              />
-            </div>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={currentPageId}
+                variants={pageMorphVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                {renderPage()}
+                <PageNav
+                  currentNum={currentPage.num}
+                  total={PAGES.length}
+                  onPrev={handlePrev}
+                  onNext={handleNext}
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
         </main>
       </div>

@@ -8,24 +8,31 @@ import type { CarouselImage } from "@/lib/types";
 type Props = {
   images: CarouselImage[];
   ariaLabel?: string;
+  /** 자동 전환 간격(ms). 0이면 꺼짐. 기본 3500ms */
+  autoIntervalMs?: number;
 };
 
 export default function ImageCarousel({
   images,
   ariaLabel = "이미지 캐러셀",
+  autoIntervalMs = 3500,
 }: Props) {
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
   const total = images.length;
   const rootRef = useRef<HTMLDivElement>(null);
 
   const goPrev = useCallback(() => {
-    setIndex((i) => Math.max(0, i - 1));
-  }, []);
-
-  const goNext = useCallback(() => {
-    setIndex((i) => Math.min(total - 1, i + 1));
+    if (total === 0) return;
+    setIndex((i) => (i - 1 + total) % total);
   }, [total]);
 
+  const goNext = useCallback(() => {
+    if (total === 0) return;
+    setIndex((i) => (i + 1) % total);
+  }, [total]);
+
+  // 키보드 좌우 방향키 지원
   useEffect(() => {
     const el = rootRef.current;
     if (!el) return;
@@ -42,6 +49,15 @@ export default function ImageCarousel({
     return () => el.removeEventListener("keydown", onKey);
   }, [goPrev, goNext]);
 
+  // 자동 전환 (호버 시 일시정지)
+  useEffect(() => {
+    if (total <= 1 || !autoIntervalMs || paused) return;
+    const id = window.setInterval(() => {
+      setIndex((i) => (i + 1) % total);
+    }, autoIntervalMs);
+    return () => window.clearInterval(id);
+  }, [total, autoIntervalMs, paused]);
+
   if (total === 0) {
     return (
       <div className="border border-slate-200 rounded-xl p-8 text-sm text-slate-500 text-center">
@@ -51,8 +67,6 @@ export default function ImageCarousel({
   }
 
   const current = images[index];
-  const isFirst = index === 0;
-  const isLast = index === total - 1;
   const needsReview = current.caption?.includes("[확인 필요]");
   const displayCaption = needsReview
     ? current.caption?.replace("[확인 필요]", "").trim()
@@ -65,6 +79,8 @@ export default function ImageCarousel({
       role="region"
       aria-label={ariaLabel}
       aria-roledescription="carousel"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
       className="focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl"
     >
       <div className="relative">
@@ -84,9 +100,8 @@ export default function ImageCarousel({
         <button
           type="button"
           onClick={goPrev}
-          disabled={isFirst}
           aria-label="이전 이미지"
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center hover:border-blue-400 hover:shadow-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-slate-200 disabled:hover:shadow-md"
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center hover:border-blue-400 hover:shadow-lg transition-all"
         >
           <ChevronLeft className="w-5 h-5 text-slate-700" />
         </button>
@@ -94,9 +109,8 @@ export default function ImageCarousel({
         <button
           type="button"
           onClick={goNext}
-          disabled={isLast}
           aria-label="다음 이미지"
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center hover:border-blue-400 hover:shadow-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-slate-200 disabled:hover:shadow-md"
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center hover:border-blue-400 hover:shadow-lg transition-all"
         >
           <ChevronRight className="w-5 h-5 text-slate-700" />
         </button>

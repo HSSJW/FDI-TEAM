@@ -1,7 +1,7 @@
 import type { PageId } from "./pages";
 
 export const SECTIONS: Record<PageId, readonly string[]> = {
-  intro: ["chat-tutorial"],
+  intro: ["chat-tutorial", "session-info"],
   challenge: ["public-vs-enterprise", "data-feeding", "per-dept-problem"],
   vision: ["as-is", "to-be", "transition-benefit"],
   quantity: [
@@ -57,6 +57,7 @@ export const SECTIONS: Record<PageId, readonly string[]> = {
 
 export const SECTION_DESCRIPTIONS: Record<string, string> = {
   "chat-tutorial": "챗봇 사용법 튜토리얼",
+  "session-info": "발표자·세션 정보",
   "public-vs-enterprise": "퍼블릭 AI와 기업 AI의 차이",
   "data-feeding": "데이터 피딩이 결과 품질을 좌우함",
   "per-dept-problem": "부서별 개별 에이전트 구축의 문제",

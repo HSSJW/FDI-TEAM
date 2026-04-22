@@ -26,6 +26,7 @@ export default function QuantityPage({ highlightedId }: Props) {
         >
           <SubHeading accent="sky">비정형 데이터</SubHeading>
           <div className="text-slate-700 leading-relaxed space-y-2">
+            <p>기업 데이터는 정형(DB)과 비정형(문서)으로 나뉩니다.</p>
             <p>
               LLM이 비정형 데이터를 잘 사용하기 위해서는 내용 기반 분류, 태깅이
               필요합니다.

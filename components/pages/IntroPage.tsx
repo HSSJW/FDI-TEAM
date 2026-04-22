@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Sparkles, ArrowRight } from "lucide-react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import AutoImageCarousel from "@/components/shared/AutoImageCarousel";
@@ -121,6 +122,67 @@ export default function IntroPage({
                 <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
               </button>
             ))}
+          </div>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper
+        id="session-info"
+        highlightedId={highlightedId}
+        className="mt-12"
+      >
+        <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-10">
+            <div className="relative mx-auto w-full max-w-[220px] shrink-0 lg:mx-0">
+              <div
+                className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-gradient-to-b from-blue-100/70 via-blue-50/40 to-transparent blur-xl"
+                aria-hidden
+              />
+              <div className="relative">
+                <Image
+                  src="/images/kim-yonggil-speaker.png"
+                  alt="T05 Building AI Data Infrastructure — 발표자 김용길 본부장"
+                  width={1292}
+                  height={1879}
+                  className="h-auto w-full object-contain drop-shadow-[0_16px_32px_rgba(15,23,42,0.15)]"
+                  sizes="(max-width: 1024px) 60vw, 220px"
+                />
+              </div>
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="mb-6">
+                <p className="mb-1 font-mono text-xs uppercase tracking-widest text-blue-600">
+                  발표자
+                </p>
+                <h3 className="font-display text-2xl font-semibold text-slate-900 sm:text-3xl">
+                  김용길 본부장
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  Fasoo FDI 2026 · Track 5 ·{" "}
+                  <span className="text-blue-700">
+                    Building AI Data Infrastructure
+                  </span>
+                </p>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                <div className="border-l-2 border-blue-500/60 pl-4">
+                  <div className="mb-1 font-mono text-xs uppercase tracking-widest text-slate-400">
+                    세션
+                  </div>
+                  <div className="text-sm font-semibold text-slate-800">
+                    Track 5
+                  </div>
+                </div>
+                <div className="border-l-2 border-blue-500/60 pl-4">
+                  <div className="mb-1 font-mono text-xs uppercase tracking-widest text-slate-400">
+                    행사
+                  </div>
+                  <div className="text-sm font-semibold text-slate-800">
+                    Fasoo FDI 2026
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </SectionWrapper>
