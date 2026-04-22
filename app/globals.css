@@ -1,50 +1,143 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* 공통: 시안+퍼플 그라데이션 슬랩 (강조 박스 톤 통일) */
+@layer components {
+  .neo-slab-base {
+    @apply border border-cyan-500/25 text-white shadow-neon-fuchsia;
+    @apply bg-gradient-to-br from-cyan-800/90 via-cyan-950/45 to-fuchsia-950/70;
+  }
+  .neo-slab--lg {
+    @apply neo-slab-base rounded-2xl p-12;
+  }
+  .neo-slab--md {
+    @apply neo-slab-base rounded-xl p-8;
+  }
+  .neo-slab--sm {
+    @apply rounded-lg border border-cyan-500/20 bg-cyan-950/40 p-2 text-center;
+  }
+  .neo-slab--accent {
+    @apply rounded-lg border border-fuchsia-500/30 bg-fuchsia-950/40 p-2 text-center;
+  }
+  .neo-kicker {
+    @apply font-mono text-xs uppercase tracking-widest text-cyan-200/90;
+  }
+  .neo-on-slab {
+    @apply text-cyan-50;
+  }
+  .neo-on-slab-secondary {
+    @apply text-cyan-100/90;
+  }
+  .neo-icon {
+    @apply text-cyan-200;
+  }
+  .neo-label-cyan {
+    @apply text-xs text-cyan-300/80;
+  }
+  .neo-label-fuchsia {
+    @apply text-xs text-fuchsia-300/80;
+  }
+  .neo-schematic-icon {
+    @apply text-cyan-400/70;
+  }
+  .neo-warning-panel {
+    @apply rounded-xl border border-fuchsia-500/25 bg-fuchsia-950/25 p-8 shadow-[inset_0_0_0_1px_rgba(192,38,211,0.12)];
+  }
+  /** 본문 안 핵심 강조(시안톤 + 굵기) */
+  .em-lead {
+    @apply font-semibold text-cyan-200;
+  }
+}
+
 * {
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html {
+  background: #05050a;
 }
 
 html,
 body {
-  background: #ffffff;
-  color: #0f172a;
+  color: #e2e8f0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/**
+ * 콘텐츠: 배경·네온은 .scene-backdrop(맨 뒤)에서만. body는 투명이라 레이어 밀지 않음.
+ */
 body {
   overflow: hidden;
+  background: transparent;
 }
 
+/**
+ * 맨 뒤 배경 레이어 — fixed·z-0, 곡면(타원 radial)만, 직선 띠 없음
+ */
+.scene-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #05050a;
+  background-image:
+    radial-gradient(
+      ellipse 130% 55% at 50% 0%,
+      rgba(6, 182, 212, 0.11) 0%,
+      rgba(6, 182, 212, 0) 58%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 100% 100%,
+      rgba(192, 38, 211, 0.1) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 50% 70% at 0% 42%,
+      rgba(34, 211, 238, 0.07) 0%,
+      transparent 50%
+    );
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-backdrop {
+    background-attachment: scroll;
+  }
+}
+
+/* 제목/브랜드: 모두 Pretendard — 굵기는 font-bold / font-extrabold 로 구분 */
 .font-display {
-  font-family: 'Fraunces', serif;
-  font-optical-sizing: auto;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .font-mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
 }
 
-/* ---------- Highlight ---------- */
+/* ---------- Highlight (네온 사이드) ---------- */
 
 @keyframes highlight-fade {
   0% {
-    background-color: rgba(37, 99, 235, 0);
-    border-left-color: rgba(37, 99, 235, 0);
+    background-color: rgba(6, 182, 212, 0);
+    border-left-color: rgba(6, 182, 212, 0);
+    box-shadow: none;
   }
   15% {
-    background-color: rgba(37, 99, 235, 0.1);
-    border-left-color: rgba(37, 99, 235, 1);
+    background-color: rgba(6, 182, 212, 0.08);
+    border-left-color: rgba(34, 211, 238, 0.95);
+    box-shadow: 0 0 20px -6px rgba(34, 211, 238, 0.45);
   }
   100% {
-    background-color: rgba(37, 99, 235, 0.04);
-    border-left-color: rgba(37, 99, 235, 1);
+    background-color: rgba(6, 182, 212, 0.04);
+    border-left-color: rgba(34, 211, 238, 0.6);
   }
 }
 
@@ -53,6 +146,7 @@ body {
   border-left-width: 3px;
   border-left-style: solid;
   padding-left: 1.5rem;
+  border-radius: 0 0.375rem 0.375rem 0;
 }
 
 /* ---------- Fade up ---------- */
@@ -97,47 +191,38 @@ body {
   animation-delay: 0.4s;
 }
 
-/* ---------- Scrollbar ---------- */
+/* ---------- Scrollbar (다크) ---------- */
 
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: rgba(6, 182, 212, 0.25);
   border-radius: 4px;
+  border: 1px solid rgba(15, 23, 42, 0.5);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: rgba(34, 211, 238, 0.4);
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(15, 23, 42, 0.3);
 }
 
-/* ---------- Grid background (IntroPage) ---------- */
-
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-/* ---------- Float hover card ---------- */
+/* ---------- Float hover (네온 링) ---------- */
 
 .float-hover {
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease,
-    border-color 0.35s ease,
-    border-radius 0.35s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease,
+    border-color 0.35s ease, border-radius 0.35s ease, background-color 0.35s ease;
 }
 
 .float-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px -12px rgba(37, 99, 235, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.35), 0 12px 40px -12px rgba(6, 182, 212, 0.25),
+    0 0 32px -16px rgba(192, 38, 211, 0.2);
   border-radius: 1.25rem;
-  border-color: rgb(147, 197, 253);
+  border-color: rgba(34, 211, 238, 0.4);
+  background-color: rgba(15, 23, 42, 0.55);
 }
 
 /* ---------- Modal / carousel fade ---------- */
@@ -172,22 +257,24 @@ body {
   animation: carousel-fade 0.3s ease-out forwards;
 }
 
-/* Live demo 빈 화면 — 아이콘만 아주 은은한 호흡 */
+/* Live demo 빈 화면 */
 @keyframes live-demo-breathe {
   0%,
   100% {
     opacity: 0.35;
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.8;
   }
 }
 .live-demo-breathe {
   animation: live-demo-breathe 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.35));
 }
 @media (prefers-reduced-motion: reduce) {
   .live-demo-breathe {
     animation: none;
-    opacity: 0.5;
+    opacity: 0.55;
+    filter: none;
   }
 }

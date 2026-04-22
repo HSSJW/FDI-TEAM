@@ -43,9 +43,9 @@ const pillars: Pillar[] = [
 ];
 
 const colorMap: Record<PillarColor, string> = {
-  sky: "text-sky-600 bg-sky-50",
-  amber: "text-amber-600 bg-amber-50",
-  blue: "text-blue-600 bg-blue-50",
+  sky: "border-cyan-500/30 bg-cyan-950/50 text-cyan-300",
+  amber: "border-fuchsia-500/30 bg-fuchsia-950/45 text-fuchsia-200",
+  blue: "border-cyan-500/35 bg-cyan-950/60 text-cyan-200",
 };
 
 export default function RequirementsPage({ highlightedId }: Props) {
@@ -69,21 +69,21 @@ export default function RequirementsPage({ highlightedId }: Props) {
             return (
               <div
                 key={p.label}
-                className="border border-slate-200 rounded-2xl p-8 text-center float-hover bg-white"
+                className="border border-slate-600/50 rounded-2xl p-8 text-center float-hover bg-slate-900/50"
               >
                 <div
                   className={`w-14 h-14 ${colorMap[p.color]} rounded-2xl flex items-center justify-center mx-auto mb-6`}
                 >
                   <Icon className="w-7 h-7" />
                 </div>
-                <h3 className="font-display text-3xl font-medium text-slate-900 mb-3">
+                <h3 className="font-display text-3xl font-bold text-slate-100 mb-3">
                   {p.label}
                 </h3>
-                <p className="text-slate-600 whitespace-pre-line leading-relaxed mb-4 text-sm">
+                <p className="text-slate-400 whitespace-pre-line leading-relaxed mb-4 text-sm">
                   {p.desc}
                 </p>
-                <div className="pt-4 border-t border-slate-100">
-                  <p className="text-slate-700 whitespace-pre-line leading-relaxed text-sm">
+                <div className="pt-4 border-t border-cyan-500/15">
+                  <p className="text-slate-300 whitespace-pre-line leading-relaxed text-sm">
                     {p.detail}
                   </p>
                 </div>
@@ -94,14 +94,12 @@ export default function RequirementsPage({ highlightedId }: Props) {
       </SectionWrapper>
 
       <SectionWrapper id="synthesis" highlightedId={highlightedId}>
-        <div className="bg-blue-600 text-white rounded-2xl p-12 text-center">
-          <div className="text-xs font-mono text-blue-200 uppercase tracking-widest mb-4">
-            Synthesis
-          </div>
-          <h3 className="font-display text-4xl font-medium tracking-tight mb-4">
+        <div className="neo-slab--lg text-center">
+          <div className="neo-kicker mb-4">Synthesis</div>
+          <h3 className="mb-4 font-display text-4xl font-bold tracking-tight">
             &quot;통합된 데이터를, 안전하게 제공하고 통제&quot;
           </h3>
-          <p className="text-blue-100 leading-relaxed max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl leading-relaxed text-cyan-100/90">
             세 요건은 따로 떨어진 것이 아니라 하나의 시스템에서 동시에
             만족되어야 합니다.
           </p>

@@ -57,7 +57,7 @@ export default function ImageCarousel({
 
   if (total === 0) {
     return (
-      <div className="border border-slate-200 rounded-xl p-8 text-sm text-slate-500 text-center">
+      <div className="rounded-xl border border-cyan-500/25 bg-slate-900/40 p-8 text-center text-sm text-slate-500">
         표시할 이미지가 없습니다.
       </div>
     );
@@ -77,10 +77,10 @@ export default function ImageCarousel({
       role="region"
       aria-label={ariaLabel}
       aria-roledescription="carousel"
-      className="focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl"
+      className="rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/60"
     >
       <div className="relative">
-        <div className="relative aspect-video bg-slate-50 border border-slate-200 rounded-xl overflow-hidden">
+        <div className="relative aspect-video overflow-hidden rounded-xl border border-cyan-500/25 bg-slate-900/60 shadow-[inset_0_0_40px_rgba(0,0,0,0.35)]">
           <div
             className="carousel-track flex h-full w-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none will-change-transform"
             style={{
@@ -114,9 +114,9 @@ export default function ImageCarousel({
           onClick={goPrev}
           disabled={single}
           aria-label="이전 이미지"
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center hover:border-blue-400 hover:shadow-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-slate-200 disabled:hover:shadow-md"
+          className="absolute left-0 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-cyan-500/30 bg-slate-950/90 shadow-neon-cyan transition-all hover:border-cyan-400/60 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-cyan-500/30"
         >
-          <ChevronLeft className="w-5 h-5 text-slate-700" />
+          <ChevronLeft className="h-5 w-5 text-cyan-200" />
         </button>
 
         <button
@@ -124,9 +124,9 @@ export default function ImageCarousel({
           onClick={goNext}
           disabled={single}
           aria-label="다음 이미지"
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center hover:border-blue-400 hover:shadow-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-slate-200 disabled:hover:shadow-md"
+          className="absolute right-0 top-1/2 flex h-10 w-10 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-cyan-500/30 bg-slate-950/90 shadow-neon-cyan transition-all hover:border-cyan-400/60 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          <ChevronRight className="w-5 h-5 text-slate-700" />
+          <ChevronRight className="h-5 w-5 text-cyan-200" />
         </button>
       </div>
 
@@ -140,22 +140,22 @@ export default function ImageCarousel({
               aria-label={`${i + 1}번째 이미지로 이동`}
               className={`h-1.5 rounded-full transition-all ${
                 i === index
-                  ? "w-6 bg-blue-600"
-                  : "w-1.5 bg-slate-300 hover:bg-slate-400"
+                  ? "w-6 bg-gradient-to-r from-cyan-400 to-fuchsia-400 shadow-neon-cyan"
+                  : "w-1.5 bg-slate-600 hover:bg-cyan-500/50"
               }`}
             />
           ))}
         </div>
-        <div className="text-xs font-mono text-slate-500">
+        <div className="font-mono text-xs text-cyan-400/80">
           {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </div>
       </div>
 
       {displayCaption && (
         <div className="mt-3 flex items-start gap-2">
-          <p className="text-sm text-slate-600 flex-1">{displayCaption}</p>
+          <p className="flex-1 text-sm text-slate-400">{displayCaption}</p>
           {needsReview && (
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-medium shrink-0">
+            <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-fuchsia-500/45 bg-fuchsia-950/50 px-2 py-0.5 text-xs font-medium text-fuchsia-200">
               <AlertCircle className="w-3 h-3" />
               확인 필요
             </span>

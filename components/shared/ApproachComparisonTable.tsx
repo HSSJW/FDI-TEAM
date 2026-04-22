@@ -15,22 +15,22 @@ type Props = {
 };
 
 const headerColors: Record<Accent, string> = {
-  sky: "bg-sky-50 text-sky-900 border-sky-200",
-  amber: "bg-amber-50 text-amber-900 border-amber-200",
-  blue: "bg-blue-50 text-blue-900 border-blue-200",
+  sky: "border-cyan-500/25 bg-cyan-950/50 text-cyan-200",
+  amber: "border-fuchsia-500/30 bg-fuchsia-950/40 text-fuchsia-200",
+  blue: "border-cyan-500/35 bg-cyan-950/50 text-cyan-200",
 };
 
 export default function ApproachComparisonTable({ rows, accent = "sky" }: Props) {
   return (
-    <div className="border border-slate-200 rounded-xl overflow-hidden">
+    <div className="overflow-hidden rounded-xl border border-cyan-500/20">
       <div
-        className={`grid grid-cols-3 ${headerColors[accent]} border-b ${headerColors[accent]}`}
+        className={`grid grid-cols-3 border-b border-cyan-500/20 ${headerColors[accent]}`}
       >
         <div className="px-5 py-3 text-sm font-semibold">과제 영역</div>
-        <div className="px-5 py-3 text-sm font-semibold border-l border-slate-200">
+        <div className="border-l border-cyan-500/20 px-5 py-3 text-sm font-semibold">
           핵심 이슈
         </div>
-        <div className="px-5 py-3 text-sm font-semibold border-l border-slate-200">
+        <div className="border-l border-cyan-500/20 px-5 py-3 text-sm font-semibold">
           왜 어려운가
         </div>
       </div>
@@ -39,20 +39,20 @@ export default function ApproachComparisonTable({ rows, accent = "sky" }: Props)
         return (
           <div
             key={i}
-            className={`grid grid-cols-3 ${
-              i !== rows.length - 1 ? "border-b border-slate-200" : ""
+            className={`grid grid-cols-3 bg-slate-900/20 ${
+              i !== rows.length - 1 ? "border-b border-cyan-500/15" : ""
             }`}
           >
-            <div className="px-5 py-4 flex items-start gap-2">
-              <Icon className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
-              <span className="text-sm font-medium text-slate-800">
+            <div className="flex items-start gap-2 px-5 py-4">
+              <Icon className="mt-0.5 h-4 w-4 shrink-0 text-cyan-500/60" />
+              <span className="text-sm font-medium text-slate-200">
                 {row.area}
               </span>
             </div>
-            <div className="px-5 py-4 text-sm text-slate-700 leading-relaxed border-l border-slate-200">
+            <div className="border-l border-cyan-500/15 px-5 py-4 text-sm leading-relaxed text-slate-300">
               {row.issue}
             </div>
-            <div className="px-5 py-4 text-sm text-slate-600 leading-relaxed border-l border-slate-200">
+            <div className="border-l border-cyan-500/15 px-5 py-4 text-sm leading-relaxed text-slate-400">
               {row.reason}
             </div>
           </div>

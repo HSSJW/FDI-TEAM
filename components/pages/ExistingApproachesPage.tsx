@@ -32,47 +32,47 @@ export default function ExistingApproachesPage({ highlightedId }: Props) {
 
       <div className="grid grid-cols-2 gap-6 mb-10">
         <SectionWrapper id="centralization" highlightedId={highlightedId}>
-          <div className="border border-slate-200 rounded-xl p-8 h-full float-hover bg-white">
-            <div className="text-xs font-mono text-emerald-600 mb-2">
+          <div className="border border-slate-600/50 rounded-xl p-8 h-full float-hover bg-slate-900/50">
+            <div className="neo-label-cyan mb-2 font-mono text-[11px]">
               Centralized Storage &amp; ECM
             </div>
-            <h3 className="font-display text-2xl text-slate-900 mb-4">
+            <h3 className="font-display text-2xl font-bold text-slate-100 mb-4">
               문서 중앙화 방식
             </h3>
-            <p className="text-slate-700 text-sm leading-relaxed mb-6">
+            <p className="text-slate-300 text-sm leading-relaxed mb-6">
               모든 직원과 시스템의 파일을 단일 중앙 저장소에 물리적으로 강제
               이관해 모아둔 후 AI에 학습시키는 방식
             </p>
-            <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+            <div className="bg-slate-900/40 rounded-lg p-4 border border-slate-600/50">
               <div className="grid grid-cols-3 gap-2 mb-3">
-                <div className="bg-white border border-slate-200 rounded p-2 text-center">
-                  <FileText className="w-4 h-4 text-slate-400 mx-auto mb-1" />
-                  <div className="text-[10px] text-slate-600">직원 A 문서</div>
+                <div className="rounded border border-cyan-500/15 bg-slate-900/50 p-2 text-center">
+                  <FileText className="neo-schematic-icon mx-auto mb-1 h-4 w-4" />
+                  <div className="text-[10px] text-slate-400">직원 A 문서</div>
                 </div>
-                <div className="bg-white border border-slate-200 rounded p-2 text-center">
-                  <FileText className="w-4 h-4 text-slate-400 mx-auto mb-1" />
-                  <div className="text-[10px] text-slate-600">직원 B 문서</div>
+                <div className="rounded border border-cyan-500/15 bg-slate-900/50 p-2 text-center">
+                  <FileText className="neo-schematic-icon mx-auto mb-1 h-4 w-4" />
+                  <div className="text-[10px] text-slate-400">직원 B 문서</div>
                 </div>
-                <div className="bg-white border border-slate-200 rounded p-2 text-center">
-                  <FileText className="w-4 h-4 text-slate-400 mx-auto mb-1" />
-                  <div className="text-[10px] text-slate-600">부서 폴더</div>
+                <div className="rounded border border-cyan-500/15 bg-slate-900/50 p-2 text-center">
+                  <FileText className="neo-schematic-icon mx-auto mb-1 h-4 w-4" />
+                  <div className="text-[10px] text-slate-400">부서 폴더</div>
                 </div>
               </div>
-              <div className="flex justify-center mb-2">
-                <ArrowRight className="w-4 h-4 text-slate-400 rotate-90" />
+              <div className="mb-2 flex justify-center">
+                <ArrowRight className="h-4 w-4 rotate-90 text-cyan-500/40" />
               </div>
-              <div className="bg-emerald-50 border border-emerald-200 rounded p-2 text-center mb-2">
-                <HardDrive className="w-4 h-4 text-emerald-600 mx-auto mb-1" />
-                <div className="text-[10px] text-emerald-700 font-medium">
+              <div className="neo-slab--sm mb-2 text-cyan-200">
+                <HardDrive className="mx-auto mb-1 h-4 w-4 text-cyan-400" />
+                <div className="text-[10px] font-medium text-cyan-200/90">
                   중앙 통합 서버
                 </div>
               </div>
-              <div className="flex justify-center mb-2">
-                <ArrowRight className="w-4 h-4 text-slate-400 rotate-90" />
+              <div className="mb-2 flex justify-center">
+                <ArrowRight className="h-4 w-4 rotate-90 text-cyan-500/40" />
               </div>
-              <div className="bg-emerald-100 border border-emerald-300 rounded p-2 text-center">
-                <Brain className="w-4 h-4 text-emerald-700 mx-auto mb-1" />
-                <div className="text-[10px] text-emerald-800 font-medium">
+              <div className="neo-slab--sm border-cyan-500/35 bg-cyan-950/50 text-cyan-100">
+                <Brain className="mx-auto mb-1 h-4 w-4 text-cyan-300" />
+                <div className="text-[10px] font-medium text-cyan-200">
                   LLM / AI 엔진
                 </div>
               </div>
@@ -81,47 +81,47 @@ export default function ExistingApproachesPage({ highlightedId }: Props) {
         </SectionWrapper>
 
         <SectionWrapper id="data-lake" highlightedId={highlightedId}>
-          <div className="border border-slate-200 rounded-xl p-8 h-full float-hover bg-white">
-            <div className="text-xs font-mono text-indigo-600 mb-2">
+          <div className="border border-slate-600/50 rounded-xl p-8 h-full float-hover bg-slate-900/50">
+            <div className="neo-label-fuchsia mb-2 font-mono text-[11px]">
               Data Lake &amp; Object Storage
             </div>
-            <h3 className="font-display text-2xl text-slate-900 mb-4">
+            <h3 className="font-display text-2xl font-bold text-slate-100 mb-4">
               데이터 레이크 방식
             </h3>
-            <p className="text-slate-700 text-sm leading-relaxed mb-6">
+            <p className="text-slate-300 text-sm leading-relaxed mb-6">
               정형·반정형·비정형 등 모든 형태의 데이터를 가공하지 않은
               원시(Raw) 상태로 한 곳에 저장해 AI가 활용하는 방식
             </p>
-            <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+            <div className="bg-slate-900/40 rounded-lg p-4 border border-slate-600/50">
               <div className="grid grid-cols-3 gap-2 mb-3">
-                <div className="bg-white border border-slate-200 rounded p-2 text-center">
-                  <Database className="w-4 h-4 text-slate-400 mx-auto mb-1" />
-                  <div className="text-[10px] text-slate-600">정형 DB</div>
+                <div className="rounded border border-fuchsia-500/20 bg-slate-900/50 p-2 text-center">
+                  <Database className="mx-auto mb-1 h-4 w-4 text-fuchsia-400/60" />
+                  <div className="text-[10px] text-slate-400">정형 DB</div>
                 </div>
-                <div className="bg-white border border-slate-200 rounded p-2 text-center">
-                  <FileText className="w-4 h-4 text-slate-400 mx-auto mb-1" />
-                  <div className="text-[10px] text-slate-600">반정형</div>
+                <div className="rounded border border-fuchsia-500/20 bg-slate-900/50 p-2 text-center">
+                  <FileText className="mx-auto mb-1 h-4 w-4 text-fuchsia-400/60" />
+                  <div className="text-[10px] text-slate-400">반정형</div>
                 </div>
-                <div className="bg-white border border-slate-200 rounded p-2 text-center">
-                  <FileText className="w-4 h-4 text-slate-400 mx-auto mb-1" />
-                  <div className="text-[10px] text-slate-600">비정형</div>
+                <div className="rounded border border-fuchsia-500/20 bg-slate-900/50 p-2 text-center">
+                  <FileText className="mx-auto mb-1 h-4 w-4 text-fuchsia-400/60" />
+                  <div className="text-[10px] text-slate-400">비정형</div>
                 </div>
               </div>
-              <div className="flex justify-center mb-2">
-                <ArrowRight className="w-4 h-4 text-slate-400 rotate-90" />
+              <div className="mb-2 flex justify-center">
+                <ArrowRight className="h-4 w-4 rotate-90 text-fuchsia-500/40" />
               </div>
-              <div className="bg-indigo-50 border border-indigo-200 rounded p-2 text-center mb-2">
-                <Layers className="w-4 h-4 text-indigo-600 mx-auto mb-1" />
-                <div className="text-[10px] text-indigo-700 font-medium">
+              <div className="neo-slab--accent mb-2 text-fuchsia-200">
+                <Layers className="mx-auto mb-1 h-4 w-4 text-fuchsia-300" />
+                <div className="text-[10px] font-medium text-fuchsia-200/90">
                   데이터 레이크
                 </div>
               </div>
-              <div className="flex justify-center mb-2">
-                <ArrowRight className="w-4 h-4 text-slate-400 rotate-90" />
+              <div className="mb-2 flex justify-center">
+                <ArrowRight className="h-4 w-4 rotate-90 text-fuchsia-500/40" />
               </div>
-              <div className="bg-indigo-100 border border-indigo-300 rounded p-2 text-center">
-                <Brain className="w-4 h-4 text-indigo-700 mx-auto mb-1" />
-                <div className="text-[10px] text-indigo-800 font-medium">
+              <div className="neo-slab--accent border-fuchsia-500/40 bg-fuchsia-950/50">
+                <Brain className="mx-auto mb-1 h-4 w-4 text-fuchsia-300" />
+                <div className="text-[10px] font-medium text-fuchsia-100">
                   LLM / AI 엔진
                 </div>
               </div>
@@ -131,16 +131,16 @@ export default function ExistingApproachesPage({ highlightedId }: Props) {
       </div>
 
       <SectionWrapper id="gap-analysis" highlightedId={highlightedId}>
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-8">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-mono text-amber-700 uppercase tracking-widest">
+        <div className="neo-warning-panel">
+          <div className="mb-1 flex items-center gap-2">
+            <span className="text-xs font-mono uppercase tracking-widest text-fuchsia-300/90">
               But,
             </span>
           </div>
-          <h3 className="font-display text-2xl text-slate-900 mb-2">
+          <h3 className="mb-2 font-display text-2xl font-bold text-slate-100">
             이 문제들은 어떻게 해결할 것인가?
           </h3>
-          <p className="text-sm text-slate-600 mb-6">
+          <p className="mb-6 text-sm text-slate-400">
             두 방식 모두 데이터 취합과 최신화에 집중할 뿐, 다음 영역은 공백으로
             남겨둡니다.
           </p>
@@ -148,15 +148,15 @@ export default function ExistingApproachesPage({ highlightedId }: Props) {
             {gaps.map((item) => (
               <div
                 key={item.label}
-                className="bg-white border border-amber-200 rounded-lg p-4"
+                className="rounded-lg border border-fuchsia-500/25 bg-slate-900/60 p-4"
               >
-                <div className="flex items-start gap-2 mb-1">
-                  <X className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                  <div className="text-sm font-medium text-slate-900">
+                <div className="mb-1 flex items-start gap-2">
+                  <X className="mt-0.5 h-4 w-4 shrink-0 text-fuchsia-400/80" />
+                  <div className="text-sm font-medium text-slate-100">
                     {item.label}
                   </div>
                 </div>
-                <div className="text-xs text-slate-600 ml-6">{item.desc}</div>
+                <div className="text-xs text-slate-400 ml-6">{item.desc}</div>
               </div>
             ))}
           </div>

@@ -7,9 +7,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        "neon-cyan":
+          "0 0 24px -4px rgba(34, 211, 238, 0.45), 0 0 8px -2px rgba(34, 211, 238, 0.25)",
+        "neon-fuchsia":
+          "0 0 20px -4px rgba(232, 121, 249, 0.4), inset 0 0 0 1px rgba(34, 211, 238, 0.12)",
+        "neon-soft":
+          "0 0 32px -12px rgba(34, 211, 238, 0.2), 0 4px 24px -8px rgba(0,0,0,0.5)",
+      },
       fontFamily: {
         sans: ["Pretendard", "system-ui", "-apple-system", "sans-serif"],
-        display: ["Fraunces", "Georgia", "serif"],
+        display: [
+          "Pretendard",
+          "system-ui",
+          "-apple-system",
+          "sans-serif",
+        ],
         mono: ["JetBrains Mono", "Consolas", "monospace"],
       },
       animation: {

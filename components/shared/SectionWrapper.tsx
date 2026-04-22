@@ -31,7 +31,7 @@ export default function SectionWrapper({
       viewport={{ once: true, margin: "-8% 0px -5% 0px", amount: 0.12 }}
       variants={sectionRevealVariants}
       className={`scroll-mt-24 transition-all rounded-r ${
-        isHighlighted ? "highlight-active border-blue-600" : ""
+        isHighlighted ? "highlight-active border-cyan-400" : ""
       } ${className}`}
     >
       {children}

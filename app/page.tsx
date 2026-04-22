@@ -125,7 +125,7 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen bg-white text-slate-900 overflow-hidden flex flex-col">
+    <div className="flex h-screen flex-col overflow-hidden text-slate-200">
       <Header currentPage={currentPage.num} totalPages={PAGES.length} />
       <div className="flex-1 flex overflow-hidden">
         <Sidebar currentPageId={currentPageId} onNavigate={navigateTo} />

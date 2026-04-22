@@ -22,7 +22,7 @@ export default function QualityPage({ highlightedId }: Props) {
       <div className="space-y-8 mb-10">
         <SectionWrapper id="hallucination-cause" highlightedId={highlightedId}>
           <SubHeading accent="sky">할루시네이션의 발생 원인</SubHeading>
-          <div className="text-slate-700 leading-relaxed space-y-2">
+          <div className="text-slate-300 leading-relaxed space-y-2">
             <p>
               방대한 데이터 중 불필요하거나 중복된 데이터를 참고할 경우, AI가
               거짓 정보를 생성하는 할루시네이션 현상이 발생합니다.
@@ -36,7 +36,7 @@ export default function QualityPage({ highlightedId }: Props) {
 
         <SectionWrapper id="metadata-role" highlightedId={highlightedId}>
           <SubHeading accent="sky">메타데이터의 역할</SubHeading>
-          <div className="text-slate-700 leading-relaxed space-y-2">
+          <div className="text-slate-300 leading-relaxed space-y-2">
             <p>
               문서의 생성자·시점·부서·열람 기록 등 풍부한 메타데이터를
               조합하면, 질의에 가장 적합한 최신 데이터만을 선별할 수 있습니다.
@@ -50,7 +50,7 @@ export default function QualityPage({ highlightedId }: Props) {
 
         <SectionWrapper id="filtering-need" highlightedId={highlightedId}>
           <SubHeading accent="sky">사전 필터링의 중요성</SubHeading>
-          <div className="text-slate-700 leading-relaxed space-y-2">
+          <div className="text-slate-300 leading-relaxed space-y-2">
             <p>
               메타데이터 기반의 사전 필터링을 거친 데이터만 AI 생성 모델에
               전달해야 결과 품질이 보장됩니다.

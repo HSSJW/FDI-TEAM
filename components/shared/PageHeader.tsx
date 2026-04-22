@@ -39,19 +39,19 @@ export default function PageHeader({ num, title, subtitle, group }: Props) {
         className="flex items-center gap-3 mb-4"
         variants={headerItem}
       >
-        <span className="text-xs font-mono text-blue-600 tracking-widest uppercase">
+        <span className="text-xs font-mono uppercase tracking-widest text-cyan-400/90">
           Chapter {String(num).padStart(2, "0")} · {group}
         </span>
       </motion.div>
       <motion.h1
-        className="font-display text-5xl font-medium text-slate-900 tracking-tight leading-tight mb-4"
+        className="mb-4 font-display text-5xl font-bold leading-tight tracking-tight text-slate-100"
         variants={headerItem}
       >
         {title}
       </motion.h1>
       {subtitle && (
         <motion.p
-          className="text-lg text-slate-600 leading-relaxed max-w-2xl"
+          className="max-w-2xl text-lg leading-relaxed text-slate-400"
           variants={headerItem}
         >
           {subtitle}

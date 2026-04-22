@@ -25,7 +25,7 @@ export default function QuantityPage({ highlightedId }: Props) {
           highlightedId={highlightedId}
         >
           <SubHeading accent="sky">비정형 데이터의 중요성</SubHeading>
-          <div className="text-slate-700 leading-relaxed space-y-2">
+          <div className="text-slate-300 leading-relaxed space-y-2">
             <p>기업 데이터는 정형(DB)과 비정형(문서)으로 나뉩니다.</p>
             <p>
               LLM은 자연어로 구성된 비정형 데이터에서 훨씬 높은 성능을
@@ -36,7 +36,7 @@ export default function QuantityPage({ highlightedId }: Props) {
 
         <SectionWrapper id="update-sync" highlightedId={highlightedId}>
           <SubHeading accent="sky">데이터 업데이트 및 동기화</SubHeading>
-          <div className="text-slate-700 leading-relaxed space-y-2">
+          <div className="text-slate-300 leading-relaxed space-y-2">
             <p>
               초기 데이터 취합 후 새로 생성되는 문서나 기존 문서의 수정 사항을
               실시간으로 반영하는 것은 매우 중요합니다.
@@ -50,7 +50,7 @@ export default function QuantityPage({ highlightedId }: Props) {
 
         <SectionWrapper id="lifecycle-issue" highlightedId={highlightedId}>
           <SubHeading accent="sky">데이터 생애 주기</SubHeading>
-          <div className="text-slate-700 leading-relaxed">
+          <div className="text-slate-300 leading-relaxed">
             <p>
               더 이상 유효하지 않은 폐기 데이터가 AI 검색 및 생성에 활용되는
               것을 차단해야 합니다.
