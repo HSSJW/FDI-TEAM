@@ -77,14 +77,14 @@ export default function AgentsPage({ highlightedId }: Props) {
             return (
               <div
                 key={a.id}
-                className="border border-slate-200 rounded-xl p-6 bg-white float-hover"
+                className="border border-slate-600/50 rounded-xl p-6 bg-slate-900/50 float-hover"
               >
-                <Icon className="w-6 h-6 text-blue-600 mb-3" />
-                <div className="font-display text-lg text-slate-900 mb-1">
+                <Icon className="w-6 h-6 text-cyan-400 mb-3" />
+                <div className="font-display text-lg font-bold text-slate-100 mb-1">
                   {a.name}
                 </div>
                 <div className="text-xs text-slate-500 mb-3">{a.subtitle}</div>
-                <p className="text-sm text-slate-700 leading-relaxed">{a.desc}</p>
+                <p className="text-sm text-slate-300 leading-relaxed">{a.desc}</p>
               </div>
             );
           })}
@@ -101,11 +101,11 @@ export default function AgentsPage({ highlightedId }: Props) {
               className="mb-4"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center border border-blue-200">
-                  <Icon className="w-5 h-5 text-blue-600" />
+                <div className="w-10 h-10 bg-cyan-950/30 rounded-lg flex items-center justify-center border border-cyan-500/25">
+                  <Icon className="w-5 h-5 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="font-display text-2xl text-slate-900">
+                  <h3 className="font-display text-2xl font-bold text-slate-100">
                     {a.name}
                   </h3>
                   <div className="text-xs text-slate-500 font-mono">
@@ -117,9 +117,9 @@ export default function AgentsPage({ highlightedId }: Props) {
                 {a.bullets.map((b, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-2 text-slate-700 leading-relaxed"
+                    className="flex items-start gap-2 text-slate-300 leading-relaxed"
                   >
-                    <span className="text-blue-600 mt-1.5">•</span>
+                    <span className="text-cyan-400 mt-1.5">•</span>
                     <span>{b}</span>
                   </li>
                 ))}
@@ -138,15 +138,15 @@ export default function AgentsPage({ highlightedId }: Props) {
       })}
 
       <SectionWrapper id="real-cases" highlightedId={highlightedId}>
-        <div className="bg-blue-50/40 border border-blue-100 rounded-xl p-8 float-hover">
-          <div className="text-xs font-mono text-blue-600 uppercase tracking-widest mb-3">
+        <div className="bg-cyan-950/25 border border-cyan-500/20 rounded-xl p-8 float-hover">
+          <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-3">
             실제 사례
           </div>
-          <div className="font-display text-3xl text-slate-900 mb-2">
-            파수 사내에서 <span className="text-blue-600">44개</span>의 에이전트
+          <div className="font-display text-3xl font-bold text-slate-100 mb-2">
+            파수 사내에서 <span className="text-cyan-400">44개</span>의 에이전트
             운영 중
           </div>
-          <p className="text-slate-700">
+          <p className="text-slate-300">
             영업 마스터, 제품 가이드 마스터 등 다양한 도메인에서 활발히 활용되고
             있습니다.
           </p>

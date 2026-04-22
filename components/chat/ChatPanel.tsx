@@ -119,16 +119,16 @@ const ChatPanel = forwardRef<ChatPanelHandle, Props>(function ChatPanel(
         <button
           onClick={() => setOpen(true)}
           aria-label="AI 가이드 열기"
-          className="fixed bottom-6 right-6 w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-105 z-40"
+          className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-cyan-600 to-fuchsia-600 text-white shadow-neon-cyan transition-all hover:scale-105 hover:from-cyan-500 hover:to-fuchsia-500"
         >
-          <MessageCircle className="w-6 h-6" />
-          <span className="absolute -top-1 -right-1 w-3 h-3 bg-blue-400 rounded-full animate-ping" />
+          <MessageCircle className="h-6 w-6" />
+          <span className="absolute -right-1 -top-1 h-3 w-3 animate-ping rounded-full bg-fuchsia-400" />
         </button>
       )}
 
       {open && (
-        <div className="fixed bottom-6 right-6 w-96 h-[600px] bg-white border border-slate-200 rounded-2xl shadow-2xl flex flex-col z-50 overflow-hidden">
-          <div className="px-5 py-4 border-b border-slate-200 flex items-center justify-between bg-gradient-to-r from-blue-600 to-blue-700">
+        <div className="fixed bottom-6 right-6 z-50 flex h-[600px] w-96 flex-col overflow-hidden rounded-2xl border border-cyan-500/30 bg-slate-950/95 shadow-neon-fuchsia backdrop-blur-sm">
+          <div className="flex items-center justify-between border-b border-cyan-500/25 bg-gradient-to-r from-cyan-800/90 to-fuchsia-900/80 px-5 py-4">
             <div className="flex items-center gap-2 text-white">
               <Sparkles className="w-4 h-4" />
               <span className="font-medium text-sm">AI 가이드</span>
@@ -148,10 +148,10 @@ const ChatPanel = forwardRef<ChatPanelHandle, Props>(function ChatPanel(
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-slate-50 rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1">
-                  <span className="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot" />
-                  <span className="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot" />
-                  <span className="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot" />
+                <div className="flex gap-1 rounded-2xl rounded-bl-sm border border-cyan-500/20 bg-slate-900/80 px-4 py-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 typing-dot" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 typing-dot" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 typing-dot" />
                 </div>
               </div>
             )}
@@ -160,7 +160,7 @@ const ChatPanel = forwardRef<ChatPanelHandle, Props>(function ChatPanel(
 
           {showSuggested && (
             <div className="px-4 pb-2">
-              <div className="text-xs text-slate-400 mb-2 font-mono">
+              <div className="mb-2 font-mono text-xs text-cyan-500/60">
                 추천 질문
               </div>
               <div className="space-y-1.5">
@@ -168,7 +168,7 @@ const ChatPanel = forwardRef<ChatPanelHandle, Props>(function ChatPanel(
                   <button
                     key={i}
                     onClick={() => handleSuggested(q)}
-                    className="w-full text-left text-xs px-3 py-2 bg-slate-50 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all"
+                    className="w-full rounded-lg border border-cyan-500/15 bg-slate-900/60 px-3 py-2 text-left text-xs text-slate-300 transition-all hover:border-cyan-500/40 hover:text-cyan-200"
                   >
                     {q}
                   </button>
@@ -177,20 +177,20 @@ const ChatPanel = forwardRef<ChatPanelHandle, Props>(function ChatPanel(
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="p-3 border-t border-slate-200">
-            <div className="flex items-center gap-2 bg-slate-50 rounded-xl px-3 py-2">
+          <form onSubmit={handleSubmit} className="border-t border-cyan-500/20 p-3">
+            <div className="flex items-center gap-2 rounded-xl border border-cyan-500/15 bg-slate-900/50 px-3 py-2">
               <input
                 type="text"
                 value={input}
                 onChange={handleInputChange}
                 placeholder="질문을 입력하세요..."
-                className="flex-1 bg-transparent text-sm text-slate-800 placeholder-slate-400 outline-none"
+                className="flex-1 border-0 bg-transparent text-sm text-slate-200 placeholder-slate-500 outline-none"
               />
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
                 aria-label="메시지 보내기"
-                className="text-blue-600 hover:text-blue-700 disabled:opacity-30"
+                className="text-cyan-400 transition-colors hover:text-cyan-300 disabled:opacity-30"
               >
                 <Send className="w-4 h-4" />
               </button>
