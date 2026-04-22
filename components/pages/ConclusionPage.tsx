@@ -5,6 +5,7 @@ import {
   BookOpen,
   ExternalLink,
   MessageCircle,
+  Building2,
   type LucideIcon,
 } from "lucide-react";
 import PageHeader from "@/components/shared/PageHeader";
@@ -79,7 +80,7 @@ export default function ConclusionPage({
       </SectionWrapper>
 
       <SectionWrapper id="cta" highlightedId={highlightedId}>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           <button
             onClick={() => onNavigate("intro")}
             className="border border-slate-200 rounded-xl p-6 text-left transition-all float-hover bg-white"
@@ -91,17 +92,29 @@ export default function ConclusionPage({
             <div className="text-sm text-slate-500">학습 여정을 다시 시작</div>
           </button>
           <a
-            href="https://www.fasoo.com"
+            href="https://www.fasoo.ai/products/wrapsody"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-slate-200 rounded-xl p-6 text-left transition-all float-hover bg-white block"
           >
             <ExternalLink className="w-5 h-5 text-blue-600 mb-3" />
+            <div className="font-medium text-slate-900 mb-1">FASOO</div>
+            <div className="text-sm text-slate-500">
+              Wrapsody 공식 제품 페이지
+            </div>
+          </a>
+          <a
+            href="https://www.fasoo.ai/solutions/ai-ready-data-environment"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-slate-200 rounded-xl p-6 text-left transition-all float-hover bg-white block"
+          >
+            <Building2 className="w-5 h-5 text-blue-600 mb-3" />
             <div className="font-medium text-slate-900 mb-1">
-              Fasoo 자료 살펴보기
+              AI 데이터 컨설팅
             </div>
             <div className="text-sm text-slate-500">
-              공식 제품 페이지로 이동
+              AI-Ready Data Environment 솔루션 안내
             </div>
           </a>
           <button

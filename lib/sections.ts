@@ -1,7 +1,7 @@
 import type { PageId } from "./pages";
 
 export const SECTIONS: Record<PageId, readonly string[]> = {
-  intro: ["chat-tutorial", "session-info"],
+  intro: ["chat-tutorial"],
   challenge: ["public-vs-enterprise", "data-feeding", "per-dept-problem"],
   vision: ["as-is", "to-be", "transition-benefit"],
   quantity: [
@@ -44,20 +44,19 @@ export const SECTIONS: Record<PageId, readonly string[]> = {
     "domain-master-demo",
     "real-cases",
   ],
-  fireside: ["concept", "mobile-extension", "open-api", "fireside-demo"],
+  fireside: ["concept", "integrated-hub", "mobile-extension", "open-api"],
   conclusion: ["summary", "one-and-only", "cta"],
 };
 
 export const SECTION_DESCRIPTIONS: Record<string, string> = {
   "chat-tutorial": "챗봇 사용법 튜토리얼",
-  "session-info": "세션 원본 정보",
   "public-vs-enterprise": "퍼블릭 AI와 기업 AI의 차이",
   "data-feeding": "데이터 피딩이 결과 품질을 좌우함",
   "per-dept-problem": "부서별 개별 에이전트 구축의 문제",
   "as-is": "AS-IS: 부서별 에이전트 난립",
   "to-be": "TO-BE: 통합 AI 데이터 인프라",
   "transition-benefit": "통합 인프라 전환 시 이점",
-  "unstructured-importance": "비정형 데이터의 중요성",
+  "unstructured-importance": "비정형 데이터",
   "update-sync": "데이터 지속 최신화 문제",
   "lifecycle-issue": "폐기 데이터 관리",
   "quantity-breakdown": "Quantity 요건 정리",
@@ -66,7 +65,7 @@ export const SECTION_DESCRIPTIONS: Record<string, string> = {
   "leak-scenario": "데이터 유출 시나리오",
   "traditional-limit": "기존 보안 방식의 한계",
   "security-breakdown": "Security 요건 정리",
-  "hallucination-cause": "할루시네이션 원인",
+  "hallucination-cause": "Garbage In Garbage Out",
   "metadata-role": "메타데이터의 역할",
   "filtering-need": "필터링 필요성",
   "quality-breakdown": "Quality 요건 정리",
@@ -89,9 +88,9 @@ export const SECTION_DESCRIPTIONS: Record<string, string> = {
   "domain-master-demo": "Domain Master 실행 캡쳐",
   "real-cases": "파수 사내 운영 사례",
   concept: "Fireside 개념",
+  "integrated-hub": "Wrapsody 3기능 + 메신저 통합 구조",
   "mobile-extension": "모바일 인터페이스 확장",
   "open-api": "개방형 API 연계",
-  "fireside-demo": "Fireside 데모",
   summary: "결론 요약",
   "one-and-only": "One & Only 솔루션 메시지",
   cta: "Call to Action",

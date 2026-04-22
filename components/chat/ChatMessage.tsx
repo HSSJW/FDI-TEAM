@@ -1,5 +1,7 @@
 import type { Message, ToolInvocation } from "ai";
+import { ArrowRight, Target, BookOpen } from "lucide-react";
 import ReferenceCard from "./ReferenceCard";
+import { getPage, PAGE_IDS, type PageId } from "@/lib/pages";
 import type { Reference } from "@/lib/types";
 
 type Props = {
@@ -18,28 +20,62 @@ function isFindReferencesResult(v: unknown): v is FindReferencesResult {
   return Array.isArray(obj.items);
 }
 
-function extractActionLog(invocations: ToolInvocation[] | undefined): string[] {
-  if (!invocations) return [];
-  return invocations
-    .map((inv) => {
-      if (inv.toolName === "navigate_to_page") {
-        const args = inv.args as { page_id?: string } | undefined;
-        return `navigate_to_page("${args?.page_id ?? ""}")`;
-      }
-      if (inv.toolName === "highlight_section") {
-        const args = inv.args as { section_id?: string } | undefined;
-        return `highlight_section("${args?.section_id ?? ""}")`;
-      }
-      if (inv.toolName === "find_references") {
-        const args = inv.args as { query?: string } | undefined;
-        return `find_references("${args?.query ?? ""}")`;
-      }
-      return inv.toolName;
-    })
-    .filter(Boolean);
+function isPageId(v: unknown): v is PageId {
+  return typeof v === "string" && (PAGE_IDS as string[]).includes(v);
 }
 
-function extractReferences(invocations: ToolInvocation[] | undefined): Reference[] {
+type ActionBadge = {
+  key: string;
+  icon: "navigate" | "highlight" | "search";
+  label: string;
+};
+
+function extractActionBadges(
+  invocations: ToolInvocation[] | undefined,
+): ActionBadge[] {
+  if (!invocations) return [];
+  const badges: ActionBadge[] = [];
+  invocations.forEach((inv, idx) => {
+    if (inv.toolName === "navigate_to_page") {
+      const args = inv.args as { page_id?: unknown } | undefined;
+      const pid = args?.page_id;
+      if (isPageId(pid)) {
+        const page = getPage(pid);
+        badges.push({
+          key: `nav-${idx}`,
+          icon: "navigate",
+          label: `${String(page.num).padStart(2, "0")}. ${page.title} 페이지로 이동`,
+        });
+      }
+    } else if (inv.toolName === "highlight_section") {
+      const args = inv.args as
+        | { page_id?: unknown; section_id?: unknown }
+        | undefined;
+      const sid =
+        typeof args?.section_id === "string" ? args.section_id : undefined;
+      if (sid) {
+        badges.push({
+          key: `hl-${idx}`,
+          icon: "highlight",
+          label: `관련 섹션을 강조`,
+        });
+      }
+    } else if (inv.toolName === "find_references") {
+      const args = inv.args as { query?: unknown } | undefined;
+      const q = typeof args?.query === "string" ? args.query : "";
+      badges.push({
+        key: `ref-${idx}`,
+        icon: "search",
+        label: q ? `"${q}" 관련 자료 조회` : "관련 자료 조회",
+      });
+    }
+  });
+  return badges;
+}
+
+function extractReferences(
+  invocations: ToolInvocation[] | undefined,
+): Reference[] {
   if (!invocations) return [];
   const refs: Reference[] = [];
   for (const inv of invocations) {
@@ -53,10 +89,25 @@ function extractReferences(invocations: ToolInvocation[] | undefined): Reference
   return refs;
 }
 
+function ActionBadgeRow({ badge }: { badge: ActionBadge }) {
+  const Icon =
+    badge.icon === "navigate"
+      ? ArrowRight
+      : badge.icon === "highlight"
+        ? Target
+        : BookOpen;
+  return (
+    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-100 text-xs font-medium text-blue-700">
+      <Icon className="w-3 h-3 shrink-0" />
+      <span>{badge.label}</span>
+    </div>
+  );
+}
+
 export default function ChatMessage({ message }: Props) {
   const isUser = message.role === "user";
   const references = extractReferences(message.toolInvocations);
-  const actionLog = extractActionLog(message.toolInvocations);
+  const badges = extractActionBadges(message.toolInvocations);
   const text = message.content ?? "";
 
   return (
@@ -69,16 +120,18 @@ export default function ChatMessage({ message }: Props) {
         } px-4 py-3 text-sm leading-relaxed whitespace-pre-line`}
       >
         {text}
+        {!isUser && badges.length > 0 && (
+          <div className="mt-2.5 flex flex-wrap gap-1.5">
+            {badges.map((b) => (
+              <ActionBadgeRow key={b.key} badge={b} />
+            ))}
+          </div>
+        )}
         {references.length > 0 && (
           <div className="mt-3 space-y-2">
             {references.map((ref) => (
               <ReferenceCard key={ref.id} reference={ref} />
             ))}
-          </div>
-        )}
-        {actionLog.length > 0 && !isUser && (
-          <div className="mt-2 pt-2 border-t border-slate-200 text-xs text-slate-500 font-mono">
-            → {actionLog.join(" · ")}
           </div>
         )}
       </div>

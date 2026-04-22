@@ -87,35 +87,6 @@ export default function IntroPage({
           </div>
         </div>
       </SectionWrapper>
-
-      <SectionWrapper
-        id="session-info"
-        highlightedId={highlightedId}
-        className="mt-12"
-      >
-        <div className="grid grid-cols-3 gap-6">
-          <div className="border-l-2 border-slate-200 pl-4">
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2">
-              발표자
-            </div>
-            <div className="text-sm font-medium text-slate-900">김용길 본부장</div>
-          </div>
-          <div className="border-l-2 border-slate-200 pl-4">
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2">
-              세션
-            </div>
-            <div className="text-sm font-medium text-slate-900">Track 5</div>
-          </div>
-          <div className="border-l-2 border-slate-200 pl-4">
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2">
-              행사
-            </div>
-            <div className="text-sm font-medium text-slate-900">
-              Fasoo FDI 2026
-            </div>
-          </div>
-        </div>
-      </SectionWrapper>
     </div>
   );
 }

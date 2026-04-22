@@ -78,3 +78,39 @@ export const carouselCaptures: Record<AgentId, CarouselImage[]> = {
     },
   ],
 };
+
+/**
+ * Wrapsody 실행 화면 캡쳐. 문서 관리·권한·리비전 흐름을 순서대로 보여줍니다.
+ */
+export const wrapsodyCaptures: CarouselImage[] = [
+  {
+    src: "/captures/wrapsody/1.png",
+    alt: "Wrapsody 관리 파일 표시",
+    caption: "Wrapsody 관리 파일은 빨간색 W 아이콘으로 표시됩니다",
+  },
+  {
+    src: "/captures/wrapsody/2.png",
+    alt: "Word 리비전 패널 및 문서 관리 메뉴",
+    caption: "Word 상단의 리비전 패널과 문서 관리 메뉴",
+  },
+  {
+    src: "/captures/wrapsody/3.png",
+    alt: "문서 세부 정보 - 관리자, 권한, 태그",
+    caption: "문서 관리자·권한·태그를 한 곳에서 확인",
+  },
+  {
+    src: "/captures/wrapsody/4.png",
+    alt: "권한 관리 - 조직도 기반 열람/리비전 권한 부여",
+    caption: "조직도에서 선택해 열람·리비전 권한을 부여",
+  },
+  {
+    src: "/captures/wrapsody/5.png",
+    alt: "버전 타임라인",
+    caption: "버전별 히스토리를 타임라인으로 추적",
+  },
+  {
+    src: "/captures/wrapsody/6.png",
+    alt: "리비전 완료 다이얼로그",
+    caption: "새 버전으로 리비전 완료",
+  },
+];

@@ -9,7 +9,7 @@ export const PAGES = [
   { id: "existing-approaches", num: 8, title: "기존 방식의 한계", group: "해결" },
   { id: "wrapsody", num: 9, title: "Wrapsody 솔루션", group: "해결" },
   { id: "agents", num: 10, title: "Business-Ready Agents", group: "해결" },
-  { id: "fireside", num: 11, title: "Fireside 모바일 허브", group: "해결" },
+  { id: "fireside", num: 11, title: "Fireside", group: "해결" },
   { id: "conclusion", num: 12, title: "왜 Wrapsody인가", group: "결론" },
 ] as const;
 
@@ -32,6 +32,6 @@ export const PAGE_SUMMARY: Record<PageId, string> = {
   "existing-approaches": "문서 중앙화·RAG·하이브리드 방식의 한계와 통합 공백",
   wrapsody: "Wrapsody 솔루션의 세 가지 핵심 기술(최신화·접근통제·품질)과 라이브 데모",
   agents: "Wrapsody 위에서 동작하는 K-Assistant·Librarian·Domain Master 에이전트 소개",
-  fireside: "모바일 메신저 허브 Fireside와 개방형 API 연계",
+  fireside: "Wrapsody 3대 기능에 메신저를 더한 통합 허브 Fireside",
   conclusion: "왜 Wrapsody인가에 대한 결론과 CTA",
 };

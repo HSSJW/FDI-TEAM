@@ -2,7 +2,8 @@ import { CheckCircle2 } from "lucide-react";
 import PageHeader from "@/components/shared/PageHeader";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SubHeading from "@/components/shared/SubHeading";
-import ContentComingSoon from "@/components/shared/ContentComingSoon";
+import ImageCarousel from "@/components/shared/ImageCarousel";
+import { wrapsodyCaptures } from "@/lib/captures";
 
 type Props = {
   highlightedId: string | null;
@@ -108,10 +109,12 @@ export default function WrapsodyPage({ highlightedId }: Props) {
 
       <SectionWrapper id="live-demo" highlightedId={highlightedId}>
         <SubHeading accent="blue">Live Demo</SubHeading>
-        <ContentComingSoon
-          title="Wrapsody 핵심 기능 데모 준비 중"
-          description="실제 시연 영상이 준비되는 대로 이 영역에 추가됩니다."
-        />
+        <div className="max-w-3xl">
+          <ImageCarousel
+            images={wrapsodyCaptures}
+            ariaLabel="Wrapsody 실행 화면"
+          />
+        </div>
       </SectionWrapper>
     </div>
   );

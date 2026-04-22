@@ -21,7 +21,7 @@ export default function QualityPage({ highlightedId }: Props) {
 
       <div className="space-y-8 mb-10">
         <SectionWrapper id="hallucination-cause" highlightedId={highlightedId}>
-          <SubHeading accent="sky">할루시네이션의 발생 원인</SubHeading>
+          <SubHeading accent="sky">Garbage In Garbage Out</SubHeading>
           <div className="text-slate-700 leading-relaxed space-y-2">
             <p>
               방대한 데이터 중 불필요하거나 중복된 데이터를 참고할 경우, AI가

@@ -24,12 +24,11 @@ export default function QuantityPage({ highlightedId }: Props) {
           id="unstructured-importance"
           highlightedId={highlightedId}
         >
-          <SubHeading accent="sky">비정형 데이터의 중요성</SubHeading>
+          <SubHeading accent="sky">비정형 데이터</SubHeading>
           <div className="text-slate-700 leading-relaxed space-y-2">
-            <p>기업 데이터는 정형(DB)과 비정형(문서)으로 나뉩니다.</p>
             <p>
-              LLM은 자연어로 구성된 비정형 데이터에서 훨씬 높은 성능을
-              발휘합니다.
+              LLM이 비정형 데이터를 잘 사용하기 위해서는 내용 기반 분류, 태깅이
+              필요합니다.
             </p>
           </div>
         </SectionWrapper>
