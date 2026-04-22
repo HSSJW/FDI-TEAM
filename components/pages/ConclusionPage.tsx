@@ -43,10 +43,10 @@ export default function ConclusionPage({
             return (
               <div
                 key={item.label}
-                className="bg-white border border-slate-200 rounded-xl p-5 text-center float-hover"
+                className="bg-slate-900/50 border border-slate-600/50 rounded-xl p-5 text-center float-hover"
               >
-                <Icon className="w-5 h-5 text-blue-600 mx-auto mb-2" />
-                <div className="text-sm font-medium text-slate-900">
+                <Icon className="w-5 h-5 text-cyan-400 mx-auto mb-2" />
+                <div className="text-sm font-medium text-slate-100">
                   {item.label}
                 </div>
                 <div className="text-xs text-slate-500 mt-1">자동화</div>
@@ -61,15 +61,17 @@ export default function ConclusionPage({
         highlightedId={highlightedId}
         className="mb-12"
       >
-        <div className="bg-blue-600 text-white rounded-2xl p-12 text-center">
-          <div className="font-display text-7xl font-light mb-4">1</div>
-          <div className="text-xs font-mono text-blue-200 uppercase tracking-widest mb-3">
+        <div className="rounded-2xl bg-gradient-to-br from-cyan-700/90 via-fuchsia-900/80 to-slate-950 p-12 text-center text-white shadow-neon-fuchsia">
+          <div className="mb-4 font-display text-7xl font-light text-cyan-100/90">
+            1
+          </div>
+          <div className="mb-3 font-mono text-xs uppercase tracking-widest text-cyan-200/90">
             One &amp; Only Solution
           </div>
-          <h3 className="font-display text-3xl font-medium mb-4">
+          <h3 className="mb-4 font-display text-3xl font-bold">
             AI Data Infrastructure + Business-Ready Agent
           </h3>
-          <p className="text-blue-100 leading-relaxed max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl leading-relaxed text-cyan-50/90">
             여러 시스템의 복잡한 연동이나 인력에 의존하는 수동 관리 없이,
             <br />
             데이터 최신화·접근 통제·품질 관리를 솔루션 하나에서 완벽하게
@@ -82,10 +84,10 @@ export default function ConclusionPage({
         <div className="grid grid-cols-3 gap-4">
           <button
             onClick={() => onNavigate("intro")}
-            className="border border-slate-200 rounded-xl p-6 text-left transition-all float-hover bg-white"
+            className="border border-slate-600/50 rounded-xl p-6 text-left transition-all float-hover bg-slate-900/50"
           >
-            <BookOpen className="w-5 h-5 text-blue-600 mb-3" />
-            <div className="font-medium text-slate-900 mb-1">
+            <BookOpen className="w-5 h-5 text-cyan-400 mb-3" />
+            <div className="font-medium text-slate-100 mb-1">
               처음부터 다시 보기
             </div>
             <div className="text-sm text-slate-500">학습 여정을 다시 시작</div>
@@ -94,10 +96,10 @@ export default function ConclusionPage({
             href="https://www.fasoo.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-slate-200 rounded-xl p-6 text-left transition-all float-hover bg-white block"
+            className="border border-slate-600/50 rounded-xl p-6 text-left transition-all float-hover bg-slate-900/50 block"
           >
-            <ExternalLink className="w-5 h-5 text-blue-600 mb-3" />
-            <div className="font-medium text-slate-900 mb-1">
+            <ExternalLink className="w-5 h-5 text-cyan-400 mb-3" />
+            <div className="font-medium text-slate-100 mb-1">
               Fasoo 자료 살펴보기
             </div>
             <div className="text-sm text-slate-500">
@@ -106,10 +108,10 @@ export default function ConclusionPage({
           </a>
           <button
             onClick={onOpenChat}
-            className="border border-slate-200 rounded-xl p-6 text-left transition-all float-hover bg-white"
+            className="border border-slate-600/50 rounded-xl p-6 text-left transition-all float-hover bg-slate-900/50"
           >
-            <MessageCircle className="w-5 h-5 text-blue-600 mb-3" />
-            <div className="font-medium text-slate-900 mb-1">
+            <MessageCircle className="w-5 h-5 text-cyan-400 mb-3" />
+            <div className="font-medium text-slate-100 mb-1">
               AI에게 더 물어보기
             </div>
             <div className="text-sm text-slate-500">남은 궁금증 해소하기</div>

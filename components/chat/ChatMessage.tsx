@@ -64,8 +64,8 @@ export default function ChatMessage({ message }: Props) {
       <div
         className={`max-w-[85%] ${
           isUser
-            ? "bg-blue-600 text-white rounded-2xl rounded-br-sm"
-            : "bg-slate-50 text-slate-800 rounded-2xl rounded-bl-sm"
+            ? "rounded-2xl rounded-br-sm bg-gradient-to-r from-cyan-600 to-cyan-500 text-white shadow-neon-cyan"
+            : "rounded-2xl rounded-bl-sm border border-cyan-500/15 bg-slate-900/70 text-slate-200"
         } px-4 py-3 text-sm leading-relaxed whitespace-pre-line`}
       >
         {text}
@@ -77,7 +77,7 @@ export default function ChatMessage({ message }: Props) {
           </div>
         )}
         {actionLog.length > 0 && !isUser && (
-          <div className="mt-2 pt-2 border-t border-slate-200 text-xs text-slate-500 font-mono">
+          <div className="mt-2 border-t border-cyan-500/15 pt-2 font-mono text-xs text-slate-500">
             → {actionLog.join(" · ")}
           </div>
         )}

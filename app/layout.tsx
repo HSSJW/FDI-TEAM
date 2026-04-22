@@ -14,8 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className="font-sans antialiased bg-white text-slate-900">
-        {children}
+      <body className="font-sans antialiased text-slate-200">
+        {/* 맨 뒤(z-0) — 콘텐츠(.app-frame z-10)에 가리지 않음, 클릭도 통과 */}
+        <div className="scene-backdrop" aria-hidden />
+        <div className="app-frame relative z-10 min-h-screen w-full">
+          {children}
+        </div>
       </body>
     </html>
   );

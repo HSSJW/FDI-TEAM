@@ -1,7 +1,26 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Sparkles, ArrowRight } from "lucide-react";
 import SectionWrapper from "@/components/shared/SectionWrapper";
+import IntroPageHeroParallax from "@/components/pages/IntroPageHeroParallax";
 import { SUGGESTED_QUESTIONS } from "@/lib/suggestions";
 import type { PageId } from "@/lib/pages";
+
+const introHero = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+} as const;
+
+const introItem = {
+  hidden: { opacity: 0, y: 28, filter: "blur(6px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+  },
+} as const;
 
 type Props = {
   highlightedId: string | null;
@@ -16,50 +35,72 @@ export default function IntroPage({
 }: Props) {
   return (
     <div>
-      <div className="relative -mx-12 -mt-12 px-12 pt-12 pb-20 mb-16 grid-bg">
-        <div className="max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium mb-8">
-            <Sparkles className="w-3 h-3" />
+      <IntroPageHeroParallax className="relative -mx-12 -mt-12 px-12 pt-12 pb-20 mb-16 overflow-hidden">
+        <motion.div
+          className="max-w-4xl"
+          initial="hidden"
+          animate="show"
+          variants={introHero}
+        >
+          <motion.div
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-cyan-500/35 bg-cyan-950/40 px-3 py-1 text-xs font-medium text-cyan-200 shadow-neon-cyan"
+            variants={introItem}
+          >
+            <Sparkles className="h-3 w-3 text-cyan-300" />
             FDI 2026 Symposium · Track 5
-          </div>
-          <h1 className="font-display text-7xl font-medium text-slate-900 tracking-tight leading-[1.05] mb-6">
+          </motion.div>
+          <motion.h1
+            className="mb-6 font-display text-7xl font-extrabold leading-[1.05] tracking-tight text-slate-100"
+            variants={introItem}
+          >
             Building
             <br />
-            <span className="text-blue-600">AI Data Infrastructure</span>
-          </h1>
-          <p className="text-2xl font-display text-slate-700 leading-snug max-w-2xl mb-10 italic">
+            <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-fuchsia-400 bg-clip-text font-extrabold text-transparent">
+              AI Data Infrastructure
+            </span>
+          </motion.h1>
+          <motion.p
+            className="mb-10 max-w-2xl font-display text-2xl font-medium leading-snug text-slate-400 italic"
+            variants={introItem}
+          >
             &quot;ChatGPT는 똑똑한데,
             <br />왜 우리 회사 일은 못 도와줄까?&quot;
-          </p>
-          <button
-            onClick={() => onNavigate("challenge")}
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors group"
-          >
-            학습 시작하기
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
-      </div>
+          </motion.p>
+          <motion.div variants={introItem}>
+            <button
+              onClick={() => onNavigate("challenge")}
+              className="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-cyan-600 to-cyan-500 px-6 py-3 font-bold text-white shadow-neon-cyan transition-transform hover:scale-[1.02] hover:from-cyan-500 hover:to-fuchsia-600"
+            >
+              학습 시작하기
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </IntroPageHeroParallax>
 
-      <SectionWrapper id="chat-tutorial" highlightedId={highlightedId}>
-        <div className="bg-blue-50/40 border border-blue-100 rounded-2xl p-8">
-          <div className="flex items-start gap-4 mb-6">
-            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center shrink-0">
-              <Sparkles className="w-5 h-5 text-white" />
+      <SectionWrapper
+        id="chat-tutorial"
+        highlightedId={highlightedId}
+        revealIndex={0}
+      >
+        <div className="rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-8 shadow-neon-fuchsia">
+          <div className="mb-6 flex items-start gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-600 to-fuchsia-700 shadow-neon-cyan">
+              <Sparkles className="h-5 w-5 text-white" />
             </div>
             <div className="flex-1">
-              <h3 className="font-display text-2xl font-medium text-slate-900 mb-2">
+              <h3 className="mb-2 font-display text-2xl font-bold text-slate-100">
                 AI 가이드에게 물어보세요
               </h3>
-              <div className="text-slate-700 leading-relaxed space-y-2">
+              <div className="space-y-2 leading-relaxed text-slate-300">
                 <p>우측 하단의 챗봇을 클릭해 자유롭게 질문할 수 있습니다.</p>
                 <p>
                   AI 가이드는{" "}
-                  <span className="font-medium text-blue-700">
+                  <span className="font-semibold text-cyan-200">
                     관련 페이지로 자동 이동
                   </span>
                   시켜 주고,
-                  <span className="font-medium text-blue-700">
+                  <span className="font-semibold text-cyan-200">
                     {" "}
                     핵심 부분을 강조
                   </span>
@@ -72,16 +113,18 @@ export default function IntroPage({
               </div>
             </div>
           </div>
-          <div className="grid gap-2 ml-14">
-            <div className="text-xs font-mono text-blue-600 mb-1">예시 질문</div>
+          <div className="ml-14 grid gap-2">
+            <div className="mb-1 font-mono text-xs text-cyan-500/80">
+              예시 질문
+            </div>
             {SUGGESTED_QUESTIONS.map((q, i) => (
               <button
                 key={i}
                 onClick={() => onAskQuestion(q)}
-                className="text-left px-4 py-3 bg-white border border-slate-200 rounded-lg hover:border-blue-400 hover:shadow-sm transition-all flex items-center justify-between group"
+                className="group flex items-center justify-between rounded-lg border border-cyan-500/20 bg-slate-900/40 px-4 py-3 text-left transition-all hover:border-cyan-500/50 hover:shadow-neon-cyan"
               >
-                <span className="text-sm text-slate-700">{q}</span>
-                <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                <span className="text-sm text-slate-300">{q}</span>
+                <ArrowRight className="h-4 w-4 text-slate-600 transition-all group-hover:translate-x-1 group-hover:text-cyan-400" />
               </button>
             ))}
           </div>
@@ -92,25 +135,26 @@ export default function IntroPage({
         id="session-info"
         highlightedId={highlightedId}
         className="mt-12"
+        revealIndex={1}
       >
         <div className="grid grid-cols-3 gap-6">
-          <div className="border-l-2 border-slate-200 pl-4">
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2">
+          <div className="border-l-2 border-cyan-500/40 pl-4">
+            <div className="mb-2 font-mono text-xs uppercase tracking-widest text-slate-500">
               발표자
             </div>
-            <div className="text-sm font-medium text-slate-900">김용길 본부장</div>
+            <div className="text-sm font-medium text-slate-200">김용길 본부장</div>
           </div>
-          <div className="border-l-2 border-slate-200 pl-4">
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2">
+          <div className="border-l-2 border-cyan-500/40 pl-4">
+            <div className="mb-2 font-mono text-xs uppercase tracking-widest text-slate-500">
               세션
             </div>
-            <div className="text-sm font-medium text-slate-900">Track 5</div>
+            <div className="text-sm font-medium text-slate-200">Track 5</div>
           </div>
-          <div className="border-l-2 border-slate-200 pl-4">
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2">
+          <div className="border-l-2 border-cyan-500/40 pl-4">
+            <div className="mb-2 font-mono text-xs uppercase tracking-widest text-slate-500">
               행사
             </div>
-            <div className="text-sm font-medium text-slate-900">
+            <div className="text-sm font-medium text-slate-200">
               Fasoo FDI 2026
             </div>
           </div>

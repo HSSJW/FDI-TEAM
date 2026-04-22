@@ -22,7 +22,7 @@ export default function SecurityPage({ highlightedId }: Props) {
       <div className="space-y-8 mb-10">
         <SectionWrapper id="access-need" highlightedId={highlightedId}>
           <SubHeading accent="sky">부서별·직급별 접근 통제</SubHeading>
-          <div className="text-slate-700 leading-relaxed space-y-2">
+          <div className="text-slate-300 leading-relaxed space-y-2">
             <p>
               전사 데이터를 통합할 경우, 부서·직급별 보안 레벨에 따른 접근
               권한 통제가 필수적입니다.
@@ -36,7 +36,7 @@ export default function SecurityPage({ highlightedId }: Props) {
 
         <SectionWrapper id="leak-scenario" highlightedId={highlightedId}>
           <SubHeading accent="sky">보안 사고 시나리오</SubHeading>
-          <div className="text-slate-700 leading-relaxed space-y-2">
+          <div className="text-slate-300 leading-relaxed space-y-2">
             <p>
               인사 정보나 연봉 정보가 포함된 데이터가, 권한 없는 타 부서
               직원에게 AI 결과물 형태로 제공될 수 있습니다.
@@ -50,7 +50,7 @@ export default function SecurityPage({ highlightedId }: Props) {
 
         <SectionWrapper id="traditional-limit" highlightedId={highlightedId}>
           <SubHeading accent="sky">일반 문서 형식의 한계</SubHeading>
-          <div className="text-slate-700 leading-relaxed space-y-2">
+          <div className="text-slate-300 leading-relaxed space-y-2">
             <p>
               Word, PPT, PDF 등 일반 문서 파일은 파일 자체에 정교한 권한 체계를
               내장하지 못합니다.

@@ -26,10 +26,10 @@ export default function FiresidePage({ highlightedId }: Props) {
         <div className="grid grid-cols-3 gap-6">
           <div className="col-span-2">
             <SubHeading accent="blue">개념</SubHeading>
-            <h3 className="font-display text-2xl text-slate-900 mb-4">
+            <h3 className="font-display text-2xl font-bold text-slate-100 mb-4">
               비즈니스 메신저 + AI 메시징 허브
             </h3>
-            <div className="text-slate-700 leading-relaxed space-y-2">
+            <div className="text-slate-300 leading-relaxed space-y-2">
               <p>Fireside는 비즈니스 메신저인 동시에 AI 메시징 허브입니다.</p>
               <p>
                 Wrapsody의 모든 AI 에이전트 기능을 모바일 인터페이스로 그대로
@@ -37,8 +37,8 @@ export default function FiresidePage({ highlightedId }: Props) {
               </p>
             </div>
           </div>
-          <div className="bg-slate-50 rounded-xl p-6 flex items-center justify-center">
-            <Smartphone className="w-16 h-16 text-blue-600" />
+          <div className="bg-slate-900/40 rounded-xl p-6 flex items-center justify-center">
+            <Smartphone className="w-16 h-16 text-cyan-400" />
           </div>
         </div>
       </SectionWrapper>
@@ -48,20 +48,20 @@ export default function FiresidePage({ highlightedId }: Props) {
         highlightedId={highlightedId}
         className="mb-8"
       >
-        <div className="border border-slate-200 rounded-xl p-6 float-hover bg-white">
-          <h4 className="font-medium text-slate-900 mb-3 flex items-center gap-2">
-            <Smartphone className="w-4 h-4 text-blue-600" />
+        <div className="border border-slate-600/50 rounded-xl p-6 float-hover bg-slate-900/50">
+          <h4 className="font-medium text-slate-100 mb-3 flex items-center gap-2">
+            <Smartphone className="w-4 h-4 text-cyan-400" />
             모바일 영역으로의 인터페이스 확장
           </h4>
           <ul className="space-y-2 ml-1">
-            <li className="flex items-start gap-2 text-slate-700">
-              <span className="text-blue-600 mt-1.5">•</span>
+            <li className="flex items-start gap-2 text-slate-300">
+              <span className="text-cyan-400 mt-1.5">•</span>
               <span>
                 K-Assistant 등 기존 Wrapsody Agent를 메신저 환경으로 완벽 연계
               </span>
             </li>
-            <li className="flex items-start gap-2 text-slate-700">
-              <span className="text-blue-600 mt-1.5">•</span>
+            <li className="flex items-start gap-2 text-slate-300">
+              <span className="text-cyan-400 mt-1.5">•</span>
               <span>장소 제약 없이 언제 어디서나 AI 지식에 접근 가능</span>
             </li>
           </ul>
@@ -73,20 +73,20 @@ export default function FiresidePage({ highlightedId }: Props) {
         highlightedId={highlightedId}
         className="mb-12"
       >
-        <div className="border border-slate-200 rounded-xl p-6 float-hover bg-white">
-          <h4 className="font-medium text-slate-900 mb-3 flex items-center gap-2">
-            <Zap className="w-4 h-4 text-blue-600" />
+        <div className="border border-slate-600/50 rounded-xl p-6 float-hover bg-slate-900/50">
+          <h4 className="font-medium text-slate-100 mb-3 flex items-center gap-2">
+            <Zap className="w-4 h-4 text-cyan-400" />
             개방형 API 연결 및 범용성
           </h4>
           <ul className="space-y-2 ml-1">
-            <li className="flex items-start gap-2 text-slate-700">
-              <span className="text-blue-600 mt-1.5">•</span>
+            <li className="flex items-start gap-2 text-slate-300">
+              <span className="text-cyan-400 mt-1.5">•</span>
               <span>
                 기본 Agent 외 서드파티 AI Agent와도 채팅 인터페이스 연동 가능
               </span>
             </li>
-            <li className="flex items-start gap-2 text-slate-700">
-              <span className="text-blue-600 mt-1.5">•</span>
+            <li className="flex items-start gap-2 text-slate-300">
+              <span className="text-cyan-400 mt-1.5">•</span>
               <span>
                 기업 내 모든 AI 시스템을 하나의 메신저로 연결하는 단일 창구
               </span>
@@ -98,8 +98,9 @@ export default function FiresidePage({ highlightedId }: Props) {
       <SectionWrapper id="fireside-demo" highlightedId={highlightedId}>
         <SubHeading accent="blue">Live Demo</SubHeading>
         <ContentComingSoon
-          title="Fireside 모바일 사용 시연 준비 중"
-          description="실제 시연 영상이 준비되는 대로 이 영역에 추가됩니다."
+          variant="mediaSlot"
+          title="모바일 시연 캡처·영상 미정"
+          description="Fireside 모바일 사용 시연 캡처나 영상이 준비되면 이 영역에 연결됩니다. 현재는 자리만 확보한 상태입니다."
         />
       </SectionWrapper>
     </div>

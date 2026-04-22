@@ -47,20 +47,22 @@ export default function VisionPage({ highlightedId }: Props) {
         highlightedId={highlightedId}
         className="mb-12"
       >
-        <div className="border border-slate-200 rounded-xl p-8 bg-[#fafaf9]">
-          <div className="text-xs text-slate-400 mb-1 tracking-wide">AS-IS</div>
-          <h3 className="font-display text-2xl text-slate-900 mb-8">
+        <div className="rounded-xl border border-fuchsia-500/20 bg-slate-950/85 p-8 shadow-[inset_0_0_0_1px_rgba(192,38,211,0.12),0_0_40px_-20px_rgba(0,0,0,0.6)]">
+          <div className="mb-1 font-mono text-xs uppercase tracking-widest text-fuchsia-300/80">
+            AS-IS
+          </div>
+          <h3 className="mb-8 font-display text-2xl font-bold text-slate-100">
             개별 데이터셋 구축
           </h3>
 
-          <div className="grid grid-cols-4 gap-3 mb-2">
+          <div className="mb-2 grid grid-cols-4 gap-3">
             {dbs.map((item) => (
               <div
                 key={item.name}
-                className="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm"
+                className="rounded-xl border border-cyan-500/15 bg-slate-900/50 p-4 text-center"
               >
-                <Database className="w-6 h-6 text-slate-400 mx-auto mb-2" />
-                <div className="text-sm font-semibold text-slate-800 mb-1">
+                <Database className="neo-schematic-icon mx-auto mb-2 h-6 w-6" />
+                <div className="mb-1 text-sm font-semibold text-slate-200">
                   {item.name}
                 </div>
                 {item.data.map((d) => (
@@ -72,24 +74,24 @@ export default function VisionPage({ highlightedId }: Props) {
             ))}
           </div>
 
-          <div className="grid grid-cols-4 gap-3 mb-2">
+          <div className="mb-2 grid grid-cols-4 gap-3">
             {[0, 1, 2, 3].map((i) => (
               <div key={i} className="flex justify-center">
-                <div className="w-px h-8 border-l-2 border-dashed border-slate-300" />
+                <div className="h-8 w-px border-l-2 border-dashed border-fuchsia-500/30" />
               </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-4 gap-3 mb-6">
+          <div className="mb-6 grid grid-cols-4 gap-3">
             {agents.map((agent) => {
               const Icon = agent.icon;
               return (
                 <div
                   key={agent.name}
-                  className="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm"
+                  className="rounded-xl border border-fuchsia-500/20 bg-slate-900/50 p-4 text-center"
                 >
-                  <Icon className="w-6 h-6 text-slate-400 mx-auto mb-2" />
-                  <div className="text-sm font-semibold text-slate-800">
+                  <Icon className="mx-auto mb-2 h-6 w-6 text-fuchsia-400/60" />
+                  <div className="text-sm font-semibold text-slate-200">
                     {agent.name}
                   </div>
                 </div>
@@ -97,15 +99,15 @@ export default function VisionPage({ highlightedId }: Props) {
             })}
           </div>
 
-          <p className="text-sm text-slate-500 text-center font-medium">
+          <p className="text-center text-sm font-medium text-fuchsia-200/60">
             중복 투자 및 도입 시간 지연
           </p>
         </div>
       </SectionWrapper>
 
       <div className="flex justify-center mb-12">
-        <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-          <ArrowRight className="w-5 h-5 text-white rotate-90" />
+        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-cyan-500/30 bg-cyan-950/60 shadow-neon-cyan">
+          <ArrowRight className="h-5 w-5 rotate-90 text-cyan-200" />
         </div>
       </div>
 
@@ -114,30 +116,28 @@ export default function VisionPage({ highlightedId }: Props) {
         highlightedId={highlightedId}
         className="mb-12"
       >
-        <div className="bg-blue-600 text-white rounded-xl p-8">
-          <div className="text-xs font-mono text-blue-200 mb-2">TO-BE</div>
-          <h3 className="font-display text-2xl mb-6">
-            통합 AI Data Infrastructure
-          </h3>
-          <div className="bg-white/10 backdrop-blur rounded-lg p-6 mb-6 text-center">
-            <Layers className="w-8 h-8 text-blue-100 mx-auto mb-2" />
-            <div className="text-sm font-medium">전사 AI Data Infrastructure</div>
+        <div className="neo-slab--md">
+          <div className="neo-kicker mb-2">TO-BE</div>
+          <h3 className="mb-6 font-display text-2xl font-bold">통합 AI Data Infrastructure</h3>
+          <div className="mb-6 rounded-lg bg-white/5 p-6 text-center backdrop-blur-sm">
+            <Layers className="neo-icon mx-auto mb-2 h-8 w-8" />
+            <div className="text-sm font-bold">전사 AI Data Infrastructure</div>
           </div>
-          <div className="grid grid-cols-4 gap-3 mb-4">
+          <div className="mb-4 grid grid-cols-4 gap-3">
             {agents.map((agent) => {
               const Icon = agent.icon;
               return (
                 <div
                   key={agent.name}
-                  className="bg-white/10 backdrop-blur rounded-lg p-3 text-center"
+                  className="rounded-lg bg-white/5 p-3 text-center backdrop-blur-sm"
                 >
-                  <Icon className="w-6 h-6 text-blue-100 mx-auto mb-1" />
-                  <div className="text-xs text-blue-50">{agent.name}</div>
+                  <Icon className="neo-icon mx-auto mb-1 h-6 w-6" />
+                  <div className="neo-on-slab text-xs">{agent.name}</div>
                 </div>
               );
             })}
           </div>
-          <p className="text-sm text-blue-100 text-center">
+          <p className="text-center text-sm text-cyan-100/90">
             어떤 AI라도 즉각적인 맞춤형 도입
           </p>
         </div>
@@ -150,11 +150,11 @@ export default function VisionPage({ highlightedId }: Props) {
             return (
               <div
                 key={item.label}
-                className="border border-slate-200 rounded-lg p-6 float-hover"
+                className="border border-slate-600/50 rounded-lg p-6 float-hover"
               >
-                <Icon className="w-5 h-5 text-blue-600 mb-3" />
-                <div className="font-medium text-slate-900 mb-1">{item.label}</div>
-                <div className="text-sm text-slate-600">{item.desc}</div>
+                <Icon className="w-5 h-5 text-cyan-400 mb-3" />
+                <div className="font-bold text-slate-100 mb-1">{item.label}</div>
+                <div className="text-sm text-slate-400">{item.desc}</div>
               </div>
             );
           })}
