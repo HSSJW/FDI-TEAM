@@ -18,6 +18,7 @@ import AgentsPage from "@/components/pages/AgentsPage";
 import FiresidePage from "@/components/pages/FiresidePage";
 import ConclusionPage from "@/components/pages/ConclusionPage";
 import ChatPanel, { type ChatPanelHandle } from "@/components/chat/ChatPanel";
+import OpeningSplash from "@/components/shared/OpeningSplash";
 import { pageMorphVariants } from "@/lib/page-motion";
 import { PAGES, getPage, type PageId } from "@/lib/pages";
 
@@ -156,6 +157,8 @@ export default function Home() {
         onNavigate={navigateTo}
         onHighlight={handleHighlightFromTool}
       />
+
+      <OpeningSplash />
     </div>
   );
 }
