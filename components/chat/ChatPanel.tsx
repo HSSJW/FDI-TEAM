@@ -14,6 +14,8 @@ import { SUGGESTED_QUESTIONS } from "@/lib/suggestions";
 import type { PageId } from "@/lib/pages";
 
 const STORAGE_KEY = "wrapsody-chat-history";
+/** 이전 버전에서 localStorage에 남아있을 수 있는 레거시 키. 마운트 시 정리. */
+const LEGACY_LOCAL_KEY = "wrapsody-chat-history";
 
 const INITIAL_ASSISTANT_MESSAGE: Message = {
   id: "welcome",
@@ -32,16 +34,41 @@ type Props = {
   onHighlight: (pageId: PageId, sectionId: string) => void;
 };
 
+/**
+ * sessionStorage에 저장된 대화 내역을 불러옵니다.
+ *
+ * 세션 스코프이므로 탭을 닫으면 초기화됩니다 (오프닝 스플래시와 동일 정책).
+ *
+ * 안전장치:
+ *   - 툴 호출이 포함된 assistant 메시지는 제거합니다. 툴 호출/결과 페어링이
+ *     깨진 채로 모델에 전송되면 /api/chat 이 500을 반환할 수 있습니다.
+ *   - 레거시 localStorage 키가 남아있으면 동시에 비웁니다.
+ */
 function loadStoredMessages(): Message[] {
   if (typeof window === "undefined") return [INITIAL_ASSISTANT_MESSAGE];
+
+  // 과거 버전에서 localStorage에 저장된 레거시 기록 정리
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
+    window.localStorage.removeItem(LEGACY_LOCAL_KEY);
+  } catch {
+    // ignore
+  }
+
+  try {
+    const raw = window.sessionStorage.getItem(STORAGE_KEY);
     if (!raw) return [INITIAL_ASSISTANT_MESSAGE];
     const parsed = JSON.parse(raw) as Message[];
     if (!Array.isArray(parsed) || parsed.length === 0) {
       return [INITIAL_ASSISTANT_MESSAGE];
     }
-    return parsed;
+    // 툴 호출이 섞인 메시지는 제거 (서버에서 페어링 실패 시 500)
+    const safe = parsed.filter((m) => {
+      const toolCalls = (m as unknown as { toolInvocations?: unknown[] })
+        .toolInvocations;
+      return !Array.isArray(toolCalls) || toolCalls.length === 0;
+    });
+    if (safe.length === 0) return [INITIAL_ASSISTANT_MESSAGE];
+    return safe;
   } catch {
     return [INITIAL_ASSISTANT_MESSAGE];
   }
@@ -96,7 +123,7 @@ const ChatPanel = forwardRef<ChatPanelHandle, Props>(function ChatPanel(
   useEffect(() => {
     if (typeof window === "undefined") return;
     try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+      window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
     } catch {
       // ignore quota errors
     }
