@@ -1,5 +1,5 @@
 import { CheckCircle2, Download, ExternalLink } from "lucide-react";
-import PageHeader from "@/components/shared/PageHeader";
+import ProductBanner from "@/components/shared/ProductBanner";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import ImageCarousel from "@/components/shared/ImageCarousel";
 import { wrapsodyCaptures } from "@/lib/captures";
@@ -55,11 +55,15 @@ const techs: TechBlock[] = [
 export default function WrapsodyPage({ highlightedId }: Props) {
   return (
     <div>
-      <PageHeader
-        num={9}
+      <ProductBanner
+        chapter={9}
         group="해결 제시"
-        title="Wrapsody 솔루션"
+        logoSrc="/logos/wrapsody-logo.png"
+        logoAlt="Wrapsody"
+        logoWidth={826}
+        logoHeight={227}
         subtitle="Wrapsody는 데이터 최신화·접근 통제·품질 관리를 인프라 차원에서 자동 해결합니다."
+        gradient="from-emerald-500 via-emerald-600 to-teal-700"
       />
 
       <SectionWrapper

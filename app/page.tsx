@@ -125,30 +125,6 @@ export default function Home() {
 
   return (
     <div className="relative h-screen bg-white text-slate-900 overflow-hidden flex flex-col">
-      {/* Wrapsody 페이지 전용 파스텔 그라데이션 배경 — 9페이지에서만 등장 */}
-      <AnimatePresence>
-        {currentPageId === "wrapsody" && (
-          <motion.div
-            key="wrapsody-bg"
-            aria-hidden
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
-          >
-            {/* 베이스: 화이트 → 민트 → 틸 세로 그라데이션 */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white via-emerald-50/60 to-teal-50/80" />
-            {/* 우상단 에메랄드 블롭 */}
-            <div className="absolute -top-40 -right-40 h-[640px] w-[640px] rounded-full bg-emerald-200/45 blur-3xl" />
-            {/* 좌하단 틸 블롭 */}
-            <div className="absolute -bottom-48 -left-32 h-[720px] w-[720px] rounded-full bg-teal-200/40 blur-3xl" />
-            {/* 중앙 우측 스카이 악센트 */}
-            <div className="absolute top-1/2 right-1/3 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-sky-100/50 blur-3xl" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <Header currentPage={currentPage.num} totalPages={PAGES.length} />
       <div className="relative z-10 flex-1 flex overflow-hidden">
         <Sidebar currentPageId={currentPageId} onNavigate={navigateTo} />

@@ -8,7 +8,7 @@ import {
   Download,
   ExternalLink,
 } from "lucide-react";
-import PageHeader from "@/components/shared/PageHeader";
+import ProductBanner from "@/components/shared/ProductBanner";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SubHeading from "@/components/shared/SubHeading";
 
@@ -48,11 +48,15 @@ const hubBlocks: HubBlock[] = [
 export default function FiresidePage({ highlightedId }: Props) {
   return (
     <div>
-      <PageHeader
-        num={11}
+      <ProductBanner
+        chapter={11}
         group="해결 확장"
-        title="Fireside"
+        logoSrc="/logos/fireside-logo.png"
+        logoAlt="Fireside"
+        logoWidth={298}
+        logoHeight={64}
         subtitle="Wrapsody의 모든 기능을 메신저 인터페이스로 품어, 사무실 밖에서도 동일한 AI 경험을 제공합니다."
+        gradient="from-blue-500 via-indigo-600 to-indigo-700"
       />
 
       <SectionWrapper
