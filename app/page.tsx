@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
@@ -126,7 +125,7 @@ export default function Home() {
 
   return (
     <div className="relative h-screen bg-white text-slate-900 overflow-hidden flex flex-col">
-      {/* Wrapsody 페이지 전용 블러 배경 — 9페이지에서만 등장 */}
+      {/* Wrapsody 페이지 전용 파스텔 그라데이션 배경 — 9페이지에서만 등장 */}
       <AnimatePresence>
         {currentPageId === "wrapsody" && (
           <motion.div
@@ -138,16 +137,14 @@ export default function Home() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
           >
-            <Image
-              src="/backgrounds/wrapsody-bg.jpg"
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover scale-110"
-              style={{ filter: "blur(36px) saturate(1.35)" }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/55 to-white/25" />
+            {/* 베이스: 화이트 → 민트 → 틸 세로 그라데이션 */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white via-emerald-50/60 to-teal-50/80" />
+            {/* 우상단 에메랄드 블롭 */}
+            <div className="absolute -top-40 -right-40 h-[640px] w-[640px] rounded-full bg-emerald-200/45 blur-3xl" />
+            {/* 좌하단 틸 블롭 */}
+            <div className="absolute -bottom-48 -left-32 h-[720px] w-[720px] rounded-full bg-teal-200/40 blur-3xl" />
+            {/* 중앙 우측 스카이 악센트 */}
+            <div className="absolute top-1/2 right-1/3 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-sky-100/50 blur-3xl" />
           </motion.div>
         )}
       </AnimatePresence>
