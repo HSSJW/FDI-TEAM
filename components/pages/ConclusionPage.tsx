@@ -63,8 +63,7 @@ export default function ConclusionPage({
         className="mb-12"
       >
         <div className="bg-blue-600 text-white rounded-2xl p-12 text-center">
-          <div className="font-display text-7xl font-light mb-4">1</div>
-          <div className="text-xs font-mono text-blue-200 uppercase tracking-widest mb-3">
+          <div className="font-display text-5xl md:text-6xl font-light tracking-tight mb-6">
             One &amp; Only Solution
           </div>
           <h3 className="font-display text-3xl font-medium mb-4">
