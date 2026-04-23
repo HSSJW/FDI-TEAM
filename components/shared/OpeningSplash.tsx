@@ -16,7 +16,11 @@ type Phase = "title" | "main";
 type TitleStep = "icon" | "icon-text";
 
 /**
- * 최초 1회만 재생되는 풀스크린 오프닝 스플래시.
+ * 세션당 1회 재생되는 풀스크린 오프닝 스플래시.
+ *
+ * 노출 규칙 (`sessionStorage[STORAGE_KEY]` 기반):
+ *   - 새 세션(새 탭 / 탭 닫고 재진입 / 브라우저 재시작) 최초 진입 시 재생
+ *   - 같은 세션 내에서는 새로고침·SPA 내부 이동 시 반복 재생하지 않음
  *
  * 재생 흐름:
  *   0.0s ~ 0.7s : 파수 아이콘 페이드 + 스케일 인 (화면 정중앙)
@@ -39,22 +43,22 @@ export default function OpeningSplash() {
   const [phase, setPhase] = useState<Phase>("title");
   const [titleStep, setTitleStep] = useState<TitleStep>("icon");
 
-  // 최초 마운트 시 localStorage 확인 후 노출 여부 결정
+  // 최초 마운트 시 sessionStorage 확인 후 노출 여부 결정
   useEffect(() => {
     if (typeof window === "undefined") return;
     try {
-      if (!window.localStorage.getItem(STORAGE_KEY)) {
+      if (!window.sessionStorage.getItem(STORAGE_KEY)) {
         setVisible(true);
       }
     } catch {
-      // Private mode 등에서 localStorage 접근 실패 → 그냥 보여주고 끝냄
+      // Private mode 등에서 sessionStorage 접근 실패 → 그냥 보여주고 끝냄
       setVisible(true);
     }
   }, []);
 
   const dismiss = useCallback(() => {
     try {
-      window.localStorage.setItem(STORAGE_KEY, "1");
+      window.sessionStorage.setItem(STORAGE_KEY, "1");
     } catch {
       // ignore
     }
