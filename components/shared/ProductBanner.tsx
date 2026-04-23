@@ -21,7 +21,15 @@ type Props = {
 
 /**
  * 제품(Wrapsody / Fireside) 페이지 상단 배너.
- * 풀컬러 그라데이션 + 대각선 광선 패턴 위에 공식 로고를 하얀 카드로 띄워 가독성 확보.
+ *
+ * 레이아웃 주의: App 쉘은 `<Sidebar w-64>` + `<main flex-1>` 구조이고, main 내부에
+ * `max-w-4xl mx-auto px-12 py-12` 컨테이너가 콘텐츠를 중앙에 정렬한다. 배너는 이
+ * 컨테이너를 뚫고 나가 main 영역 전체를 가로로 채워야 한다. (파수 공식 홈페이지
+ * 히어로 밴드와 동일한 인상)
+ *
+ * - `left-1/2 -translate-x-1/2` 로 센터 기준 재정렬 (mx-auto 컨테이너 중심 = main 중심)
+ * - `w-[calc(100vw-16rem)]` 로 `viewport - sidebar(16rem/256px)` 전체 너비 확보
+ * - `-mt-12` 로 상단 py-12 패딩 상쇄
  */
 export default function ProductBanner({
   chapter,
@@ -38,7 +46,7 @@ export default function ProductBanner({
       initial="hidden"
       animate="show"
       variants={headerStaggerVariants}
-      className={`relative -mx-12 -mt-12 mb-12 overflow-hidden rounded-b-3xl bg-gradient-to-br ${gradient}`}
+      className={`relative left-1/2 -translate-x-1/2 w-[calc(100vw-16rem)] -mt-12 mb-12 overflow-hidden bg-gradient-to-br ${gradient}`}
     >
       {/* 대각선 광선 패턴 */}
       <div
@@ -49,7 +57,7 @@ export default function ProductBanner({
             "repeating-linear-gradient(120deg, transparent 0 42px, rgba(255,255,255,0.14) 42px 84px)",
         }}
       />
-      <div className="relative flex flex-col items-center px-8 py-16 text-center text-white">
+      <div className="relative flex flex-col items-center px-8 py-20 text-center text-white">
         <motion.div
           variants={headerItemVariants}
           className="mb-5 font-mono text-xs uppercase tracking-widest text-white/85"
