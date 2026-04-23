@@ -1,4 +1,4 @@
-import { PAGES, PAGE_SUMMARY } from "./pages";
+import { PAGES, PAGE_DETAILS } from "./pages";
 import { SECTIONS, SECTION_DESCRIPTIONS } from "./sections";
 
 /**
@@ -144,9 +144,18 @@ Quantity / Quality / Security
 `;
 
 function buildPageCatalog(): string {
-  return PAGES.map(
-    (p) => `- [${p.id}] (${p.num}/${PAGES.length}) ${p.title} — ${PAGE_SUMMARY[p.id]}`,
-  ).join("\n");
+  return PAGES.map((p) => {
+    const detail = PAGE_DETAILS[p.id];
+    const topics = detail.topics.join(", ");
+    const handles = detail.handles.map((h) => `      · "${h}"`).join("\n");
+    return [
+      `■ [${p.id}] (${p.num}/${PAGES.length}) ${p.title} · 그룹: ${p.group}`,
+      `    개요: ${detail.summary}`,
+      `    키워드: ${topics}`,
+      `    이런 질문이 오면 이 페이지로 이동:`,
+      handles,
+    ].join("\n");
+  }).join("\n\n");
 }
 
 function buildSectionCatalog(): string {
@@ -157,6 +166,31 @@ function buildSectionCatalog(): string {
     return `  [${p.id}] ${p.title}\n${lines}`;
   }).join("\n");
 }
+
+/**
+ * 사용자 질문을 페이지로 매핑할 때 LLM이 참고할 휴리스틱 규칙.
+ * 전체 카탈로그와 함께 제공하여 "특정 페이지로만 쏠리는" 현상을 완화합니다.
+ */
+const ROUTING_GUIDANCE = `[페이지 라우팅 규칙 — 반드시 숙지]
+1. 답변 주제가 특정 페이지와 직결되면 **반드시** 해당 페이지로 navigate_to_page 를 호출하세요.
+   - 페이지 선택은 [페이지 카탈로그]의 "개요 + 키워드 + 이런 질문이 오면 이 페이지로 이동" 블록을 기준으로 가장 잘 맞는 1개를 고릅니다.
+   - 질문이 여러 페이지에 걸쳐 있으면, **가장 중심이 되는 1개 페이지**를 고르고 나머지는 텍스트로만 언급하세요. 한 응답에 navigate_to_page를 두 번 호출하지 마세요.
+2. 문제 정의 vs 솔루션 설명을 구분하세요.
+   - "왜 문제야 / 뭐가 부족해 / 뭐가 어려워" → 문제·분석 그룹 (challenge, vision, quantity, security, quality, requirements, existing-approaches) 중 선택.
+   - "그래서 Wrapsody는 어떻게 해결해 / 기능이 뭐야" → 해결 그룹 (wrapsody, agents, fireside) 중 선택.
+3. 허들 3종의 매핑은 엄격히 지키세요.
+   - 데이터 취합/최신화/폐기 → quantity
+   - 권한/ACL/유출/기밀 → security
+   - 할루시네이션/메타데이터/필터링/답변 품질 → quality
+   - 세 가지를 모두 아우르는 질문 → requirements
+4. 제품·기능 관련 질문 매핑.
+   - Wrapsody 자체의 기술·동작 원리 → wrapsody
+   - K-Assistant / Librarian / Domain Master → agents
+   - 메신저·모바일·API·외부 연계 → fireside
+5. 세션 전반이나 사용법 질문 → intro. "결론/정리/요약" 류 질문 → conclusion.
+6. 페이지 이동 후 해당 페이지 안에서 특정 포인트를 짚고 싶을 때만 highlight_section을 이어서 호출하세요. section_id 는 반드시 [페이지별 섹션 카탈로그]에 있는 것만 사용하세요.
+7. "이 페이지가 맞는지 확실하지 않다"고 느껴지면, 그래도 가장 근접한 1개 페이지를 선택하세요. 페이지 이동을 아예 건너뛰지 마세요.
+`;
 
 /**
  * 시스템 프롬프트 조립. 순수 함수이므로 호출마다 동일한 문자열을 반환합니다.
@@ -191,6 +225,8 @@ ${buildPageCatalog()}
 
 [페이지별 섹션 카탈로그 (highlight_section의 section_id로 사용)]
 ${buildSectionCatalog()}
+
+${ROUTING_GUIDANCE}
 
 [툴 사용 가이드]
 - navigate_to_page(page_id, reason): 답변 주제에 가장 잘 맞는 페이지로 사용자를 이동시킵니다. reason은 한 문장으로 설명하세요.

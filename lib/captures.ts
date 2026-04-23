@@ -85,8 +85,9 @@ export const carouselCaptures: Record<AgentId, CarouselImage[]> = {
 export const wrapsodyCaptures: CarouselImage[] = [
   {
     src: "/captures/wrapsody/1.png",
-    alt: "Wrapsody 관리 파일 표시",
-    caption: "Wrapsody 관리 파일은 빨간색 W 아이콘으로 표시됩니다",
+    alt: "Wrapsody 서버에 등록·암호화된 파일 아이콘 표시",
+    caption:
+      "Wrapsody 서버에 등록·암호화된 파일은 아이콘 우측 하단에 Wrapsody 마크가 표시됩니다.",
   },
   {
     src: "/captures/wrapsody/2.png",
